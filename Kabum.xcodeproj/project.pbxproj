@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF013C662A26DBDD003548E2 /* KBCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF013C652A26DBDD003548E2 /* KBCoverView.swift */; };
+		CF7CE8C52A268A0000390C19 /* KBFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8C42A268A0000390C19 /* KBFlowManager.swift */; };
+		CF7CE8CB2A268A7700390C19 /* KBServiceRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CA2A268A7700390C19 /* KBServiceRequestProtocol.swift */; };
+		CF7CE8CE2A268AC000390C19 /* KBServiceManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CD2A268AC000390C19 /* KBServiceManagerProtocol.swift */; };
+		CF7CE8D02A268AEF00390C19 /* KBServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CF2A268AEF00390C19 /* KBServiceManager.swift */; };
+		CF7CE8D22A268B6400390C19 /* KBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D12A268B6400390C19 /* KBRequest.swift */; };
+		CF7CE8D42A268E8000390C19 /* KBHomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */; };
+		CF7CE8D72A26B91D00390C19 /* UICollorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D62A26B91D00390C19 /* UICollorExtensions.swift */; };
+		CF7CE8D92A26B93700390C19 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */; };
+		CF7CE8DB2A26B94B00390C19 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */; };
+		CF7CE8DD2A26B95C00390C19 /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */; };
+		CF7CE8E72A26BB2000390C19 /* KBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8E62A26BB2000390C19 /* KBTabBarController.swift */; };
+		CF7CE8EA2A26BB4900390C19 /* KBBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8E92A26BB4900390C19 /* KBBaseViewController.swift */; };
+		CF7CE8EC2A26BDAA00390C19 /* KBCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8EB2A26BDAA00390C19 /* KBCoverViewController.swift */; };
+		CF7CE8EE2A26BEDB00390C19 /* KBHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8ED2A26BEDB00390C19 /* KBHomeViewController.swift */; };
+		CF7CE8F02A26BF1300390C19 /* KBProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8EF2A26BF1300390C19 /* KBProductDetailsViewController.swift */; };
+		CF7CE8F32A26BFBA00390C19 /* KBCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8F22A26BFBA00390C19 /* KBCategoriesViewController.swift */; };
+		CF7CE8F72A26C00000390C19 /* KBFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8F62A26C00000390C19 /* KBFavoritesViewController.swift */; };
+		CF7CE8F92A26C05200390C19 /* KBAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8F82A26C05200390C19 /* KBAccountViewController.swift */; };
+		CF8EDCF02A267492008F6C71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EDCEF2A267492008F6C71 /* AppDelegate.swift */; };
+		CF8EDCF22A267492008F6C71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EDCF12A267492008F6C71 /* SceneDelegate.swift */; };
+		CF8EDCF92A267492008F6C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCF82A267492008F6C71 /* Assets.xcassets */; };
+		CF8EDCFC2A267492008F6C71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCFA2A267492008F6C71 /* LaunchScreen.storyboard */; };
+		E85FDCC1F9A28FECEAC82623 /* Pods_Kabum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0182B4B789CA71E3101ABCBC /* Pods_Kabum.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0182B4B789CA71E3101ABCBC /* Pods_Kabum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kabum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42AD1CE96F3970F6A1A46CD7 /* Pods-Kabum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kabum.release.xcconfig"; path = "Target Support Files/Pods-Kabum/Pods-Kabum.release.xcconfig"; sourceTree = "<group>"; };
+		6EE387A728714A52183C0992 /* Pods-Kabum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kabum.debug.xcconfig"; path = "Target Support Files/Pods-Kabum/Pods-Kabum.debug.xcconfig"; sourceTree = "<group>"; };
+		CF013C652A26DBDD003548E2 /* KBCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverView.swift; sourceTree = "<group>"; };
+		CF7CE8C42A268A0000390C19 /* KBFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBFlowManager.swift; sourceTree = "<group>"; };
+		CF7CE8CA2A268A7700390C19 /* KBServiceRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceRequestProtocol.swift; sourceTree = "<group>"; };
+		CF7CE8CD2A268AC000390C19 /* KBServiceManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceManagerProtocol.swift; sourceTree = "<group>"; };
+		CF7CE8CF2A268AEF00390C19 /* KBServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceManager.swift; sourceTree = "<group>"; };
+		CF7CE8D12A268B6400390C19 /* KBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBRequest.swift; sourceTree = "<group>"; };
+		CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeResponse.swift; sourceTree = "<group>"; };
+		CF7CE8D62A26B91D00390C19 /* UICollorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollorExtensions.swift; sourceTree = "<group>"; };
+		CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
+		CF7CE8E62A26BB2000390C19 /* KBTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBTabBarController.swift; sourceTree = "<group>"; };
+		CF7CE8E92A26BB4900390C19 /* KBBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBaseViewController.swift; sourceTree = "<group>"; };
+		CF7CE8EB2A26BDAA00390C19 /* KBCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverViewController.swift; sourceTree = "<group>"; };
+		CF7CE8ED2A26BEDB00390C19 /* KBHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeViewController.swift; sourceTree = "<group>"; };
+		CF7CE8EF2A26BF1300390C19 /* KBProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBProductDetailsViewController.swift; sourceTree = "<group>"; };
+		CF7CE8F22A26BFBA00390C19 /* KBCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCategoriesViewController.swift; sourceTree = "<group>"; };
+		CF7CE8F62A26C00000390C19 /* KBFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBFavoritesViewController.swift; sourceTree = "<group>"; };
+		CF7CE8F82A26C05200390C19 /* KBAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBAccountViewController.swift; sourceTree = "<group>"; };
+		CF8EDCEC2A267492008F6C71 /* Kabum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kabum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8EDCEF2A267492008F6C71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CF8EDCF12A267492008F6C71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CF8EDCF82A267492008F6C71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF8EDCFB2A267492008F6C71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF8EDCFD2A267492008F6C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF8EDCE92A267492008F6C71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E85FDCC1F9A28FECEAC82623 /* Pods_Kabum.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		292649F9B72A6A607DC99161 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6EE387A728714A52183C0992 /* Pods-Kabum.debug.xcconfig */,
+				42AD1CE96F3970F6A1A46CD7 /* Pods-Kabum.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		85DBD05477B52DBA2833189F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0182B4B789CA71E3101ABCBC /* Pods_Kabum.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF7CE8BE2A2688E300390C19 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CF8EDCF12A267492008F6C71 /* SceneDelegate.swift */,
+				CF8EDCEF2A267492008F6C71 /* AppDelegate.swift */,
+				CF8EDCFD2A267492008F6C71 /* Info.plist */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CF7CE8C22A2689A500390C19 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CF8EDCF82A267492008F6C71 /* Assets.xcassets */,
+				CF8EDCFA2A267492008F6C71 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CF7CE8C32A2689F000390C19 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8C42A268A0000390C19 /* KBFlowManager.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		CF7CE8C62A268A2000390C19 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8C72A268A3800390C19 /* Manager */,
+				CF7CE8C92A268A4700390C19 /* Requests */,
+				CF7CE8C82A268A3E00390C19 /* Responses */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CF7CE8C72A268A3800390C19 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8CF2A268AEF00390C19 /* KBServiceManager.swift */,
+				CF7CE8CD2A268AC000390C19 /* KBServiceManagerProtocol.swift */,
+				CF7CE8CA2A268A7700390C19 /* KBServiceRequestProtocol.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		CF7CE8C82A268A3E00390C19 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		CF7CE8C92A268A4700390C19 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8D12A268B6400390C19 /* KBRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		CF7CE8D52A26B8F600390C19 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8D62A26B91D00390C19 /* UICollorExtensions.swift */,
+				CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */,
+				CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */,
+				CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CF7CE8DE2A26BA0100390C19 /* UIContent */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8DF2A26BA0A00390C19 /* Components */,
+				CF7CE8E02A26BA1000390C19 /* Scenes */,
+			);
+			path = UIContent;
+			sourceTree = "<group>";
+		};
+		CF7CE8DF2A26BA0A00390C19 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8E82A26BB3400390C19 /* BaseController */,
+				CF7CE8E22A26BA2B00390C19 /* TabBar */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CF7CE8E02A26BA1000390C19 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8E42A26BA5200390C19 /* Cover */,
+				CF7CE8E12A26BA1900390C19 /* Home */,
+				CF7CE8E52A26BA6C00390C19 /* ProductDetails */,
+				CF7CE8F12A26BF3E00390C19 /* Categories */,
+				CF7CE8F42A26BFC100390C19 /* Favorites */,
+				CF7CE8F52A26BFED00390C19 /* Account */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		CF7CE8E12A26BA1900390C19 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8ED2A26BEDB00390C19 /* KBHomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CF7CE8E22A26BA2B00390C19 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8E62A26BB2000390C19 /* KBTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		CF7CE8E42A26BA5200390C19 /* Cover */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8EB2A26BDAA00390C19 /* KBCoverViewController.swift */,
+				CF013C652A26DBDD003548E2 /* KBCoverView.swift */,
+			);
+			path = Cover;
+			sourceTree = "<group>";
+		};
+		CF7CE8E52A26BA6C00390C19 /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8EF2A26BF1300390C19 /* KBProductDetailsViewController.swift */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		CF7CE8E82A26BB3400390C19 /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8E92A26BB4900390C19 /* KBBaseViewController.swift */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		CF7CE8F12A26BF3E00390C19 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8F22A26BFBA00390C19 /* KBCategoriesViewController.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CF7CE8F42A26BFC100390C19 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8F62A26C00000390C19 /* KBFavoritesViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		CF7CE8F52A26BFED00390C19 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8F82A26C05200390C19 /* KBAccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		CF8EDCE32A267492008F6C71 = {
+			isa = PBXGroup;
+			children = (
+				CF8EDCEE2A267492008F6C71 /* Kabum */,
+				CF8EDCED2A267492008F6C71 /* Products */,
+				292649F9B72A6A607DC99161 /* Pods */,
+				85DBD05477B52DBA2833189F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CF8EDCED2A267492008F6C71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF8EDCEC2A267492008F6C71 /* Kabum.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF8EDCEE2A267492008F6C71 /* Kabum */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8BE2A2688E300390C19 /* Core */,
+				CF7CE8C32A2689F000390C19 /* Flow */,
+				CF7CE8C62A268A2000390C19 /* Services */,
+				CF7CE8D52A26B8F600390C19 /* Extensions */,
+				CF7CE8DE2A26BA0100390C19 /* UIContent */,
+				CF7CE8C22A2689A500390C19 /* Resources */,
+			);
+			path = Kabum;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF8EDCEB2A267492008F6C71 /* Kabum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF8EDD002A267492008F6C71 /* Build configuration list for PBXNativeTarget "Kabum" */;
+			buildPhases = (
+				4456DAF2C1F36ACDED2D9CA6 /* [CP] Check Pods Manifest.lock */,
+				CF8EDCE82A267492008F6C71 /* Sources */,
+				CF8EDCE92A267492008F6C71 /* Frameworks */,
+				CF8EDCEA2A267492008F6C71 /* Resources */,
+				1F56518B556873A4C22EF73F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kabum;
+			productName = Kabum;
+			productReference = CF8EDCEC2A267492008F6C71 /* Kabum.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF8EDCE42A267492008F6C71 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					CF8EDCEB2A267492008F6C71 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = CF8EDCE72A267492008F6C71 /* Build configuration list for PBXProject "Kabum" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF8EDCE32A267492008F6C71;
+			productRefGroup = CF8EDCED2A267492008F6C71 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF8EDCEB2A267492008F6C71 /* Kabum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF8EDCEA2A267492008F6C71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF8EDCFC2A267492008F6C71 /* LaunchScreen.storyboard in Resources */,
+				CF8EDCF92A267492008F6C71 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F56518B556873A4C22EF73F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kabum/Pods-Kabum-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kabum/Pods-Kabum-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kabum/Pods-Kabum-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4456DAF2C1F36ACDED2D9CA6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kabum-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF8EDCE82A267492008F6C71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7CE8D42A268E8000390C19 /* KBHomeResponse.swift in Sources */,
+				CF7CE8EC2A26BDAA00390C19 /* KBCoverViewController.swift in Sources */,
+				CF7CE8D72A26B91D00390C19 /* UICollorExtensions.swift in Sources */,
+				CF7CE8EE2A26BEDB00390C19 /* KBHomeViewController.swift in Sources */,
+				CF7CE8DB2A26B94B00390C19 /* UIViewExtensions.swift in Sources */,
+				CF7CE8F72A26C00000390C19 /* KBFavoritesViewController.swift in Sources */,
+				CF7CE8D92A26B93700390C19 /* UIImageExtensions.swift in Sources */,
+				CF7CE8C52A268A0000390C19 /* KBFlowManager.swift in Sources */,
+				CF7CE8D02A268AEF00390C19 /* KBServiceManager.swift in Sources */,
+				CF7CE8EA2A26BB4900390C19 /* KBBaseViewController.swift in Sources */,
+				CF7CE8D22A268B6400390C19 /* KBRequest.swift in Sources */,
+				CF7CE8F02A26BF1300390C19 /* KBProductDetailsViewController.swift in Sources */,
+				CF7CE8E72A26BB2000390C19 /* KBTabBarController.swift in Sources */,
+				CF8EDCF02A267492008F6C71 /* AppDelegate.swift in Sources */,
+				CF7CE8CB2A268A7700390C19 /* KBServiceRequestProtocol.swift in Sources */,
+				CF7CE8F92A26C05200390C19 /* KBAccountViewController.swift in Sources */,
+				CF7CE8DD2A26B95C00390C19 /* UIStackViewExtensions.swift in Sources */,
+				CF013C662A26DBDD003548E2 /* KBCoverView.swift in Sources */,
+				CF8EDCF22A267492008F6C71 /* SceneDelegate.swift in Sources */,
+				CF7CE8F32A26BFBA00390C19 /* KBCategoriesViewController.swift in Sources */,
+				CF7CE8CE2A268AC000390C19 /* KBServiceManagerProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CF8EDCFA2A267492008F6C71 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF8EDCFB2A267492008F6C71 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF8EDCFE2A267492008F6C71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF8EDCFF2A267492008F6C71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF8EDD012A267492008F6C71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EE387A728714A52183C0992 /* Pods-Kabum.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J49GH65GF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Kabum/Core/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = joaopedro96.KabumApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF8EDD022A267492008F6C71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42AD1CE96F3970F6A1A46CD7 /* Pods-Kabum.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J49GH65GF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Kabum/Core/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = joaopedro96.KabumApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF8EDCE72A267492008F6C71 /* Build configuration list for PBXProject "Kabum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF8EDCFE2A267492008F6C71 /* Debug */,
+				CF8EDCFF2A267492008F6C71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF8EDD002A267492008F6C71 /* Build configuration list for PBXNativeTarget "Kabum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF8EDD012A267492008F6C71 /* Debug */,
+				CF8EDD022A267492008F6C71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF8EDCE42A267492008F6C71 /* Project object */;
+}
