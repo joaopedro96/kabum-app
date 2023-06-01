@@ -5,6 +5,7 @@
 //  Created by João Pedro Mata on 31/05/23.
 //
 
+import Kingfisher
 import UIKit
 
 final class KBHomeProductTableViewCell: UITableViewCell {
@@ -79,7 +80,6 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     private lazy var productImage: UIImageView = {
         let setupComponent = UIImageView(frame: .zero)
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.backgroundColor = .white
         setupComponent.clipsToBounds = true
         return setupComponent
     }()
@@ -220,18 +220,8 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     }
     
     private func updateProductImage(with urlString: String) {
-        DispatchQueue.global().async {
-            guard let loadedImage = self.getImage(from: urlString) else { return }
-            DispatchQueue.main.async {
-                self.productImage.image = loadedImage
-            }
-        }
-    }
-    
-    private func getImage(from urlString: String) -> UIImage? {
-        guard let url = URL(string: urlString) else { return nil }
-        guard let imageData = try? Data(contentsOf: url) else { return nil }
-        return UIImage(data: imageData)
+        guard let url = URL(string: urlString) else { return }
+        productImage.kf.setImage(with: url)
     }
     
     @objc private func didTapBuyButton() {
