@@ -58,6 +58,8 @@ final class KBTabBarController: UITabBarController {
     
     private func setupNavBarAppearance() {
         let navBar = navigationControllers.last?.navigationBar
+        navBar?.tintColor = .white
+        navBar?.topItem?.backButtonTitle = "Voltar"
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

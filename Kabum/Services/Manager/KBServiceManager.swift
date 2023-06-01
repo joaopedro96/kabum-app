@@ -37,4 +37,13 @@ final class KBServiceManager: KBServiceManagerProtocol {
             }
         }
     }
+    
+    func getStatusCode(request: KBServiceRequestProtocol, completion: @escaping ((Int?) -> Void)) {
+        AF.request(request.path,
+                   method: request.method,
+                   parameters: request.parameters,
+                   headers: request.headers).response { response in
+            completion(response.response?.statusCode)
+        }
+    }
 }

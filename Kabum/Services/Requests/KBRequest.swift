@@ -15,12 +15,12 @@ enum KBRequest: KBServiceRequestProtocol {
     static let homePageProductsOffset = 10
     
     case home(page: Int)
-    case description(url: String)
+    case productDetails(url: String)
     
     var path: String {
         switch self {
             case .home: return "\(KBRequest.basePath)/home/v1/home/produto"
-            case .description(let url): return "\(KBRequest.basePath)\(url)"
+            case .productDetails(let url): return "\(KBRequest.basePath)\(url)"
         }
     }
 

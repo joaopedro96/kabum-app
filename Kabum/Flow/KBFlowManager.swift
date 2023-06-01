@@ -60,6 +60,7 @@ final class KBFlowManager: UINavigationController {
     
     private func makeHomeViewController(with data: KBHomeModel) -> KBHomeViewController {
         let viewController = KBHomeViewController(productList: data.products)
+        viewController.delegate = self
         return viewController
     }
     
@@ -77,20 +78,31 @@ final class KBFlowManager: UINavigationController {
         let viewController = KBAccountViewController()
         return viewController
     }
+    
+    private func makeProductsDetailViewController(with url: String) -> KBProductDetailsViewController {
+        let viewController = KBProductDetailsViewController(productUrl: url)
+        return viewController
+    }
 }
 
 // MARK: - EXTENSIONS
 
 extension KBFlowManager: KBCoverViewControllerDelegate {
     func goToHomePage(with homeData: KBHomeModel) {
+        
+        ///Delete CoverView from navigation stack to prevent going back to cover page
+        viewControllers.removeAll()
+        
         let tabBar = assembleTabBar(with: homeData)
         pushViewController(tabBar, animated: false)
     }
 }
 
 extension KBFlowManager: KBHomeViewControllerDelegate{
-    func goToProductDetailsPage(with url: String) {
-        ///Detail Page should be called here using url parameter as its depedency injection
-        print(url)
+    
+    ///Demonstration about how 'tabBarNavControllers' should be called
+    func goToProductDetailsPage(from tabIndex: Int, with url: String) {
+        let detailVC = makeProductsDetailViewController(with: url)
+        tabBarNavControllers[tabIndex].pushViewController(detailVC, animated: true)
     }
 }

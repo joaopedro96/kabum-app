@@ -8,7 +8,7 @@
 import UIKit
 
 protocol KBHomeViewControllerDelegate: AnyObject {
-    func goToProductDetailsPage(with url: String)
+    func goToProductDetailsPage(from tabIndex: Int, with url: String)
 }
 
 final class KBHomeViewController: UIViewController {
@@ -66,12 +66,13 @@ final class KBHomeViewController: UIViewController {
 // MARK: - EXTENSIONS
 
 extension KBHomeViewController: KBHomeViewDelegate {
-    func didTapProduct(with url: String) {
-        delegate?.goToProductDetailsPage(with: url)
-    }
-    
     func getNextProductList(for currentPage: Int) {
         let nextPage = currentPage + 1
         fetchProducts(for: nextPage)
+    }
+    
+    func didTapProduct(with url: String) {
+        guard let tabIndex = navigationController?.tabBarItem.tag else { return }
+        delegate?.goToProductDetailsPage(from: tabIndex, with: url)
     }
 }
