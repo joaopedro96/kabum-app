@@ -96,7 +96,7 @@ final class KBHomeProductTableViewCell: UITableViewCell {
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
         setupComponent.numberOfLines = 3
         setupComponent.font = .systemFont(ofSize: 14, weight: .bold)
-        setupComponent.lineBreakMode = .byClipping
+        setupComponent.lineBreakMode = .byWordWrapping
         setupComponent.textColor = .gray500
         return setupComponent
     }()
@@ -242,7 +242,7 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     }
     
     private func setupImageContainerView() {
-        imageContainerView.addSubviews(tagStackView, productImage)
+        imageContainerView.addSubviews(productImage, tagStackView)
         
         let tagStackViewTrailing = tagStackView.trailingAnchor.constraint(equalTo: imageContainerView.trailingAnchor, constant: -24)
         tagStackViewTrailing.priority = .defaultLow
