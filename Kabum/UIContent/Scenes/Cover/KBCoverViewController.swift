@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol KBCoverViewViewControllerDelegate: AnyObject {
-    func goToHomePage(with homeData: KBHomeResponse)
+protocol KBCoverViewControllerDelegate: AnyObject {
+    func goToHomePage(with homeData: KBHomeModel)
 }
 
 final class KBCoverViewController: UIViewController {
@@ -16,7 +16,7 @@ final class KBCoverViewController: UIViewController {
     // MARK: - PROPERTIES
     
     private let contentView: KBCoverView
-    weak var delegate: KBCoverViewViewControllerDelegate?
+    weak var delegate: KBCoverViewControllerDelegate?
     
     // MARK: - INITIALIZERS
     
@@ -35,6 +35,11 @@ final class KBCoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
+        
+        ///Timer setted only to aid sight perception of the transition between this CoverView and the HomeView. Not required in real applications.
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            self.fetchHome()
+//        }
         fetchHome()
     }
     
@@ -42,14 +47,17 @@ final class KBCoverViewController: UIViewController {
     
     private func setupController() {
         view = contentView
+        contentView.setSpinnerAnimation(true)
     }
     
     private func fetchHome() {
-        KBServiceManager.shared.execute(request: KBRequest.home(page: 1)) { [weak self] (result: Result<KBHomeResponse, Error>) in
+        KBServiceManager.shared.execute(request: KBRequest.home(page: 1)) { [weak self] (result: Result<KBHomeModel, Error>) in
             switch result {
                 case .success(let data):
                     self?.contentView.setSpinnerAnimation(false)
                     self?.delegate?.goToHomePage(with: data)
+                    
+                ///Errors should be handled here.
                 case .failure(let error):
                     print(error)
             }

@@ -11,9 +11,22 @@ extension UIImage {
     
     // MARK: - ICONS
     
-    public class var logoImage: UIImage {
-        return initialize(with: "logo")
+    class var boxIcon: UIImage {
+        return initialize(with: "box_icon")
     }
+    
+    class var logoImage: UIImage {
+        return initialize(with: "logo_icon")
+    }
+    
+    class var ninjaIcon: UIImage {
+        return initialize(with: "ninja_icon")
+    }
+    
+    class var primeIcon: UIImage {
+        return initialize(with: "prime_icon")
+    }
+    
     
     // MARK: - INITIALIZER
     

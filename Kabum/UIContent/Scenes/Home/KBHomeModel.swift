@@ -7,7 +7,30 @@
 
 import Foundation
 
-struct KBHomeResponse: Codable {
+struct CellModel {
+    
+    let image: String
+    
+    //tag Oferta Ninja
+    let offer: KBOfferObject?
+    
+    //tag Prime Ninja
+    let discountPrice: String
+    let primeDiscountPrice: String
+
+    //tag Open Box
+    let isOpenBox: Bool
+    
+    let manufacturer: KBManufacturerObject //name capitalized
+
+    let name: String // nome produto
+    
+    let formattedDiscountPrice: String // isPrime ? formattedPrimeDiscountPrice : formattedDiscountPrice
+    
+    let formattedPrice: String // em até 10x
+}
+
+struct KBHomeModel: Codable {
     let success: Bool
     let products: [KBProductObject]
     

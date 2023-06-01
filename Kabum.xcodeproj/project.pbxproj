@@ -13,7 +13,7 @@
 		CF7CE8CE2A268AC000390C19 /* KBServiceManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CD2A268AC000390C19 /* KBServiceManagerProtocol.swift */; };
 		CF7CE8D02A268AEF00390C19 /* KBServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CF2A268AEF00390C19 /* KBServiceManager.swift */; };
 		CF7CE8D22A268B6400390C19 /* KBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D12A268B6400390C19 /* KBRequest.swift */; };
-		CF7CE8D42A268E8000390C19 /* KBHomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */; };
+		CF7CE8D42A268E8000390C19 /* KBHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D32A268E8000390C19 /* KBHomeModel.swift */; };
 		CF7CE8D72A26B91D00390C19 /* UICollorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D62A26B91D00390C19 /* UICollorExtensions.swift */; };
 		CF7CE8D92A26B93700390C19 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */; };
 		CF7CE8DB2A26B94B00390C19 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */; };
@@ -30,6 +30,9 @@
 		CF8EDCF22A267492008F6C71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EDCF12A267492008F6C71 /* SceneDelegate.swift */; };
 		CF8EDCF92A267492008F6C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCF82A267492008F6C71 /* Assets.xcassets */; };
 		CF8EDCFC2A267492008F6C71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCFA2A267492008F6C71 /* LaunchScreen.storyboard */; };
+		CFCDF71D2A279AF100BC7BED /* KBHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */; };
+		CFCDF7202A279D3E00BC7BED /* KBDynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF71F2A279D3E00BC7BED /* KBDynamicHeightTableView.swift */; };
+		CFCDF7222A279DC000BC7BED /* KBHomeProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */; };
 		E85FDCC1F9A28FECEAC82623 /* Pods_Kabum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0182B4B789CA71E3101ABCBC /* Pods_Kabum.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +46,7 @@
 		CF7CE8CD2A268AC000390C19 /* KBServiceManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceManagerProtocol.swift; sourceTree = "<group>"; };
 		CF7CE8CF2A268AEF00390C19 /* KBServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceManager.swift; sourceTree = "<group>"; };
 		CF7CE8D12A268B6400390C19 /* KBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBRequest.swift; sourceTree = "<group>"; };
-		CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeResponse.swift; sourceTree = "<group>"; };
+		CF7CE8D32A268E8000390C19 /* KBHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeModel.swift; sourceTree = "<group>"; };
 		CF7CE8D62A26B91D00390C19 /* UICollorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollorExtensions.swift; sourceTree = "<group>"; };
 		CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -62,6 +65,9 @@
 		CF8EDCF82A267492008F6C71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8EDCFB2A267492008F6C71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF8EDCFD2A267492008F6C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeView.swift; sourceTree = "<group>"; };
+		CFCDF71F2A279D3E00BC7BED /* KBDynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBDynamicHeightTableView.swift; sourceTree = "<group>"; };
+		CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeProductTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +131,6 @@
 			children = (
 				CF7CE8C72A268A3800390C19 /* Manager */,
 				CF7CE8C92A268A4700390C19 /* Requests */,
-				CF7CE8C82A268A3E00390C19 /* Responses */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -138,14 +143,6 @@
 				CF7CE8CA2A268A7700390C19 /* KBServiceRequestProtocol.swift */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		CF7CE8C82A268A3E00390C19 /* Responses */ = {
-			isa = PBXGroup;
-			children = (
-				CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */,
-			);
-			path = Responses;
 			sourceTree = "<group>";
 		};
 		CF7CE8C92A268A4700390C19 /* Requests */ = {
@@ -179,6 +176,7 @@
 		CF7CE8DF2A26BA0A00390C19 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CFCDF71E2A279D2300BC7BED /* DynamicTableView */,
 				CF7CE8E82A26BB3400390C19 /* BaseController */,
 				CF7CE8E22A26BA2B00390C19 /* TabBar */,
 			);
@@ -202,6 +200,9 @@
 			isa = PBXGroup;
 			children = (
 				CF7CE8ED2A26BEDB00390C19 /* KBHomeViewController.swift */,
+				CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */,
+				CF7CE8D32A268E8000390C19 /* KBHomeModel.swift */,
+				CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -292,6 +293,14 @@
 				CF7CE8C22A2689A500390C19 /* Resources */,
 			);
 			path = Kabum;
+			sourceTree = "<group>";
+		};
+		CFCDF71E2A279D2300BC7BED /* DynamicTableView */ = {
+			isa = PBXGroup;
+			children = (
+				CFCDF71F2A279D3E00BC7BED /* KBDynamicHeightTableView.swift */,
+			);
+			path = DynamicTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,8 +417,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF7CE8D42A268E8000390C19 /* KBHomeResponse.swift in Sources */,
+				CF7CE8D42A268E8000390C19 /* KBHomeModel.swift in Sources */,
 				CF7CE8EC2A26BDAA00390C19 /* KBCoverViewController.swift in Sources */,
+				CFCDF7222A279DC000BC7BED /* KBHomeProductTableViewCell.swift in Sources */,
 				CF7CE8D72A26B91D00390C19 /* UICollorExtensions.swift in Sources */,
 				CF7CE8EE2A26BEDB00390C19 /* KBHomeViewController.swift in Sources */,
 				CF7CE8DB2A26B94B00390C19 /* UIViewExtensions.swift in Sources */,
@@ -420,8 +430,10 @@
 				CF7CE8EA2A26BB4900390C19 /* KBBaseViewController.swift in Sources */,
 				CF7CE8D22A268B6400390C19 /* KBRequest.swift in Sources */,
 				CF7CE8F02A26BF1300390C19 /* KBProductDetailsViewController.swift in Sources */,
+				CFCDF7202A279D3E00BC7BED /* KBDynamicHeightTableView.swift in Sources */,
 				CF7CE8E72A26BB2000390C19 /* KBTabBarController.swift in Sources */,
 				CF8EDCF02A267492008F6C71 /* AppDelegate.swift in Sources */,
+				CFCDF71D2A279AF100BC7BED /* KBHomeView.swift in Sources */,
 				CF7CE8CB2A268A7700390C19 /* KBServiceRequestProtocol.swift in Sources */,
 				CF7CE8F92A26C05200390C19 /* KBAccountViewController.swift in Sources */,
 				CF7CE8DD2A26B95C00390C19 /* UIStackViewExtensions.swift in Sources */,
@@ -571,6 +583,7 @@
 				DEVELOPMENT_TEAM = J49GH65GF7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kabum/Core/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -601,6 +614,7 @@
 				DEVELOPMENT_TEAM = J49GH65GF7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kabum/Core/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;

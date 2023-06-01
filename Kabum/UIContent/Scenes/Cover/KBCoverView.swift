@@ -71,6 +71,5 @@ final class KBCoverView: UIView {
     
     private func customizeView() {
         backgroundColor = .theme
-        spinner.startAnimating()
     }
 }

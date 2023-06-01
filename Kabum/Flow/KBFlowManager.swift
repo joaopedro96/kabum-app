@@ -23,10 +23,10 @@ final class KBFlowManager: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func assembleTabBar() -> UITabBarController {
+    private func assembleTabBar(with data: KBHomeModel) -> UITabBarController {
         let tabBar = KBTabBarController()
         
-        let homeVC = makeHomeViewController()
+        let homeVC = makeHomeViewController(with: data)
         let categoriesVC = makeCategoriesViewController()
         let favoritesVC = makeFavoritesViewController()
         let accountVC = makeAccountViewController()
@@ -56,8 +56,8 @@ final class KBFlowManager: UINavigationController {
     
     // MARK: - PUBLIC METHODS
     
-    func makeHomeViewController() -> KBHomeViewController {
-        let viewController = KBHomeViewController()
+    func makeHomeViewController(with data: KBHomeModel) -> KBHomeViewController {
+        let viewController = KBHomeViewController(productList: data.products)
         return viewController
     }
     
@@ -87,9 +87,16 @@ final class KBFlowManager: UINavigationController {
 
 // MARK: - EXTENSIONS
 
-extension KBFlowManager: KBCoverViewViewControllerDelegate {
-    func goToHomePage(with homeData: KBHomeResponse) {
-        let tabBar = assembleTabBar()
+extension KBFlowManager: KBCoverViewControllerDelegate {
+    func goToHomePage(with homeData: KBHomeModel) {
+        let tabBar = assembleTabBar(with: homeData)
         pushViewController(tabBar, animated: false)
+    }
+}
+
+extension KBFlowManager: KBHomeViewControllerDelegate{
+    func goToProductDetailsPage(with url: String) {
+        ///Detail Page should be called here using url parameter as its depedency injection
+        print(url)
     }
 }
