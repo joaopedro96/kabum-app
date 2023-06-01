@@ -19,7 +19,6 @@
 		CF7CE8DB2A26B94B00390C19 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */; };
 		CF7CE8DD2A26B95C00390C19 /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */; };
 		CF7CE8E72A26BB2000390C19 /* KBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8E62A26BB2000390C19 /* KBTabBarController.swift */; };
-		CF7CE8EA2A26BB4900390C19 /* KBBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8E92A26BB4900390C19 /* KBBaseViewController.swift */; };
 		CF7CE8EC2A26BDAA00390C19 /* KBCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8EB2A26BDAA00390C19 /* KBCoverViewController.swift */; };
 		CF7CE8EE2A26BEDB00390C19 /* KBHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8ED2A26BEDB00390C19 /* KBHomeViewController.swift */; };
 		CF7CE8F02A26BF1300390C19 /* KBProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8EF2A26BF1300390C19 /* KBProductDetailsViewController.swift */; };
@@ -52,7 +51,6 @@
 		CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		CF7CE8E62A26BB2000390C19 /* KBTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBTabBarController.swift; sourceTree = "<group>"; };
-		CF7CE8E92A26BB4900390C19 /* KBBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBaseViewController.swift; sourceTree = "<group>"; };
 		CF7CE8EB2A26BDAA00390C19 /* KBCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverViewController.swift; sourceTree = "<group>"; };
 		CF7CE8ED2A26BEDB00390C19 /* KBHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeViewController.swift; sourceTree = "<group>"; };
 		CF7CE8EF2A26BF1300390C19 /* KBProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBProductDetailsViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				CFCDF71E2A279D2300BC7BED /* DynamicTableView */,
-				CF7CE8E82A26BB3400390C19 /* BaseController */,
 				CF7CE8E22A26BA2B00390C19 /* TabBar */,
 			);
 			path = Components;
@@ -230,14 +227,6 @@
 				CF7CE8EF2A26BF1300390C19 /* KBProductDetailsViewController.swift */,
 			);
 			path = ProductDetails;
-			sourceTree = "<group>";
-		};
-		CF7CE8E82A26BB3400390C19 /* BaseController */ = {
-			isa = PBXGroup;
-			children = (
-				CF7CE8E92A26BB4900390C19 /* KBBaseViewController.swift */,
-			);
-			path = BaseController;
 			sourceTree = "<group>";
 		};
 		CF7CE8F12A26BF3E00390C19 /* Categories */ = {
@@ -427,7 +416,6 @@
 				CF7CE8D92A26B93700390C19 /* UIImageExtensions.swift in Sources */,
 				CF7CE8C52A268A0000390C19 /* KBFlowManager.swift in Sources */,
 				CF7CE8D02A268AEF00390C19 /* KBServiceManager.swift in Sources */,
-				CF7CE8EA2A26BB4900390C19 /* KBBaseViewController.swift in Sources */,
 				CF7CE8D22A268B6400390C19 /* KBRequest.swift in Sources */,
 				CF7CE8F02A26BF1300390C19 /* KBProductDetailsViewController.swift in Sources */,
 				CFCDF7202A279D3E00BC7BED /* KBDynamicHeightTableView.swift in Sources */,
