@@ -7,6 +7,7 @@
 
 import UIKit
 
+///View implemented only to show TabBar navigation
 final class KBAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()

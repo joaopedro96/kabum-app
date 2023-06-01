@@ -16,7 +16,7 @@ extension UIColor {
         return storedColor
     }
     
-    // MARK: - BLUE
+    // MARK: - BLUE SCALE
     
     class var blue100: UIColor {
         guard let storedColor = UIColor(named: "blue100") else { return .red }
@@ -28,14 +28,14 @@ extension UIColor {
         return storedColor
     }
     
-    // MARK: - ORANGE
+    // MARK: - ORANGE SCALE
     
     class var orange500: UIColor {
         guard let storedColor = UIColor(named: "orange500") else { return .red }
         return storedColor
     }
     
-    // MARK: - GRAYSCALE
+    // MARK: - GRAY SCALE
     
     class var gray100: UIColor {
         guard let storedColor = UIColor(named: "gray100") else { return .red }

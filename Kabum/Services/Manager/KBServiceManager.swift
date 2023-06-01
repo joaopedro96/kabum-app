@@ -10,6 +10,7 @@ import Alamofire
 
 final class KBServiceManager: KBServiceManagerProtocol {
     
+    ///singleton instance
     static let shared = KBServiceManager()
     
     func execute<T: Decodable>(request: KBServiceRequestProtocol,

@@ -25,8 +25,8 @@ final class KBCoverView: UIView {
     private lazy var image: UIImageView = {
         let setupComponent = UIImageView()
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.image = .logoImage
         setupComponent.contentMode = .scaleAspectFit
+        setupComponent.image = .logoImage
         return setupComponent
     }()
     

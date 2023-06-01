@@ -7,29 +7,6 @@
 
 import Foundation
 
-struct CellModel {
-    
-    let image: String
-    
-    //tag Oferta Ninja
-    let offer: KBOfferObject?
-    
-    //tag Prime Ninja
-    let discountPrice: String
-    let primeDiscountPrice: String
-
-    //tag Open Box
-    let isOpenBox: Bool
-    
-    let manufacturer: KBManufacturerObject //name capitalized
-
-    let name: String // nome produto
-    
-    let formattedDiscountPrice: String // isPrime ? formattedPrimeDiscountPrice : formattedDiscountPrice
-    
-    let formattedPrice: String // em até 10x
-}
-
 struct KBHomeModel: Codable {
     let success: Bool
     let products: [KBProductObject]
@@ -41,9 +18,18 @@ struct KBHomeModel: Codable {
 }
 
 struct KBProductObject: Codable {
-    let code: Int
-    let image: String
     let name: String
+    let image: String
+    let offer: KBOfferObject?
+    let discountPrice: String
+    let formattedPrice: String
+    let primeDiscountPrice: String
+    let formattedDiscountPrice: String
+    let manufacturer: KBManufacturerObject
+    let isOpenBox: Bool
+
+    ///All the attributes listed below wont be used in this project. They are only shown to demonstrate how they should be declared
+    let code: Int
     let alt: Int
     let freeShipping: Bool
     let primeFreeShipping: Bool
@@ -51,19 +37,12 @@ struct KBProductObject: Codable {
     let oldPrice: String
     let price: String
     let primePrice: String
-    let discountPrice: String
-    let primeDiscountPrice: String
-    let formattedPrice: String
     let formattedPrimePrice: String
-    let formattedDiscountPrice: String
     let formattedPrimeDiscountPrice: String
     let reviewNumber: Int
     let reviewRate: Int
-    let isOpenBox: Bool
-    let manufacturer: KBManufacturerObject
     let menu: String
     let inStock: Bool
-    let offer: KBOfferObject?
     let sellerName: String
     let offerId: String
     let sellerId: Int

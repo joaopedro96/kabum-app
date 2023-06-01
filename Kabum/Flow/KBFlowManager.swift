@@ -11,7 +11,9 @@ final class KBFlowManager: UINavigationController {
     
     // MARK: - PROPERTIES
     
-    var tabBarNavControllers: [UINavigationController] = []
+    private var tabBarNavControllers: [UINavigationController] = []
+    
+    // MARK: - INITIALIZERS
     
     init(rootViewController: KBCoverViewController = KBCoverViewController()) {
         super.init(rootViewController: rootViewController)
@@ -23,6 +25,8 @@ final class KBFlowManager: UINavigationController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - PRIVATE METHODS
+    
     private func assembleTabBar(with data: KBHomeModel) -> UITabBarController {
         let tabBar = KBTabBarController()
         
@@ -31,58 +35,48 @@ final class KBFlowManager: UINavigationController {
         let favoritesVC = makeFavoritesViewController()
         let accountVC = makeAccountViewController()
         
-        
-        
         tabBar.addTab(viewController: homeVC,
                       title: "Início",
-                      image: UIImage(systemName: "house.fill") ?? .checkmark)
+                      image: .homeIcon)
         
         tabBar.addTab(viewController: categoriesVC,
                       title: "Categorias",
-                      image: UIImage(systemName: "list.dash") ?? .checkmark)
+                      image: .categorieIcon)
         
         tabBar.addTab(viewController: favoritesVC,
                       title: "Favoritos",
-                      image: UIImage(systemName: "heart.fill") ?? .checkmark)
+                      image: .heartIcon)
         
         tabBar.addTab(viewController: accountVC,
                       title: "Minha Conta",
-                      image: UIImage(systemName: "person.circle") ?? .checkmark)
+                      image: .accountIcon)
         
         tabBarNavControllers.append(contentsOf: tabBar.navigationControllers)
         
         return tabBar
     }
+        
+    // MARK: - MAKE CONTROLLERS
     
-    // MARK: - PUBLIC METHODS
-    
-    func makeHomeViewController(with data: KBHomeModel) -> KBHomeViewController {
+    private func makeHomeViewController(with data: KBHomeModel) -> KBHomeViewController {
         let viewController = KBHomeViewController(productList: data.products)
         return viewController
     }
     
-    func makeCategoriesViewController() -> KBCategoriesViewController {
+    private func makeCategoriesViewController() -> KBCategoriesViewController {
         let viewController = KBCategoriesViewController()
         return viewController
     }
     
-    func makeFavoritesViewController() -> KBFavoritesViewController {
+    private func makeFavoritesViewController() -> KBFavoritesViewController {
         let viewController = KBFavoritesViewController()
         return viewController
     }
     
-    func makeAccountViewController() -> KBAccountViewController {
+    private func makeAccountViewController() -> KBAccountViewController {
         let viewController = KBAccountViewController()
         return viewController
     }
-
-//    func makeCharacterDetailViewController(with data: RMCharacterDetailResponse) -> RMCharacterDetailViewController {
-//        let detailViewModel = RMCharacterDetailViewModel(characterData: data)
-//        let viewController = RMCharacterDetailViewController(viewModel: detailViewModel)
-//        detailViewModel.viewController = viewController
-//        viewController.delegate = self
-//        return viewController
-//    }
 }
 
 // MARK: - EXTENSIONS

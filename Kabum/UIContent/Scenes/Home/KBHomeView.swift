@@ -17,7 +17,7 @@ final class KBHomeView: UIView {
     // MARK: - PROPERTIES
     
     weak var delegate: KBHomeViewDelegate?
-    private var currentProductPage: Int? = 1
+    private var currentProductPage: Int? = KBRequest.firstHomePage
     private var productList: [KBProductObject] = []
     
     // MARK: - INITIALIZER
@@ -75,7 +75,6 @@ final class KBHomeView: UIView {
         setupComponent.register(KBHomeProductTableViewCell.self,
                                 forCellReuseIdentifier: KBHomeProductTableViewCell.identifier)
         setupComponent.showsVerticalScrollIndicator = false
-        setupComponent.allowsSelection = true
         setupComponent.separatorColor = .clear
         setupComponent.backgroundColor = .clear
         setupComponent.dataSource = self
@@ -91,22 +90,31 @@ final class KBHomeView: UIView {
         productTableView.reloadData()
     }
     
-    func validateData(with data: [KBProductObject]) {
-        if data.count != 10 {
-            currentProductPage = nil
-        } else {
-            currentProductPage! += 1
+    func updateProductNextPage(with data: [KBProductObject]) {
+        setCurrentPage(for: data)
+        setFooterView(false)
+        guard let indexPathArray = getIndexPathArray(for: data) else { return }
+        productTableView.performBatchUpdates {
+            self.productTableView.insertRows(at: indexPathArray, with: .automatic)
         }
-        updateProductNextPage(with: data)
     }
     
     // MARK: - PRIVATE METHODS
     
-    private func updateProductNextPage(with data: [KBProductObject]) {
-        guard let indexPathArray = getIndexPathArray(for: data) else { return }
-        setFooterView(false)
-        productTableView.performBatchUpdates {
-            self.productTableView.insertRows(at: indexPathArray, with: .automatic)
+    ///Update global variable 'currentProductPage' based on product list array size and offset page
+    private func setCurrentPage(for data: [KBProductObject]) {
+        if data.count != KBRequest.homePageProductsOffset {
+            currentProductPage = nil
+        } else {
+            currentProductPage! += 1
+        }
+    }
+    
+    private func setFooterView(_ state: Bool) {
+        if state {
+            productTableView.tableFooterView = createSpinnerFooter()
+        } else {
+            productTableView.tableFooterView = nil
         }
     }
     
@@ -120,21 +128,16 @@ final class KBHomeView: UIView {
         spinner.startAnimating()
         return footerView
     }
-        
-    private func setFooterView(_ state: Bool) {
-        if state {
-            productTableView.tableFooterView = createSpinnerFooter()
-        } else {
-            productTableView.tableFooterView = nil
-        }
-    }
     
+    ///Generate index path array to insert new rows of products in each of them
     private func getIndexPathArray(for newData: [KBProductObject]) -> [IndexPath]? {
         let currentIndex = productList.count
+        
         productList.append(contentsOf: newData)
+        
         let newCount = productList.count
+        
         var indexPathArray: [IndexPath] = []
-
         for index in currentIndex ..< newCount {
             indexPathArray.append(IndexPath(row: index, section: 0))
         }
@@ -212,6 +215,7 @@ extension KBHomeView: UITableViewDelegate, UITableViewDataSource {
         delegate?.didTapProduct(with: productList[indexPath.row].descriptionUrl)
     }
     
+    ///Define cell shadow path and fit cell to its bounds to apply radius layout
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.contentView.layer.masksToBounds = true
         let radius = cell.contentView.layer.cornerRadius
@@ -220,6 +224,8 @@ extension KBHomeView: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension KBHomeView: UIScrollViewDelegate {
+    
+    ///Calculate scroll drag movement to fetch new products. If current page is equal to nil the infinite scroll will stop
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard let currentProductPage = currentProductPage else { return }
         let position = scrollView.contentOffset.y

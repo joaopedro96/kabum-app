@@ -53,7 +53,7 @@ final class KBHomeViewController: UIViewController {
         KBServiceManager.shared.execute(request: KBRequest.home(page: page)) { [weak self] (result: Result<KBHomeModel, Error>) in
             switch result {
                 case .success(let data):
-                    self?.contentView.validateData(with: data.products)
+                    self?.contentView.updateProductNextPage(with: data.products)
                     
                 ///Errors should be handled here.
                 case .failure(let error):

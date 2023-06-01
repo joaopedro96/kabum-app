@@ -24,6 +24,8 @@ final class KBHomeProductTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - LIFE CYCLE
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         productImage.image = nil
@@ -36,18 +38,36 @@ final class KBHomeProductTableViewCell: UITableViewCell {
         tagStackView.removeSubviews()
     }
     
+    ///Set cell padding and apllied it to contentView frame when layoutSubview its called
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8))
     }
     
+    ///Insert gradient background when layout sublayers its called
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        backgroundGradient.frame = contentView.bounds
+        contentView.layer.insertSublayer(backgroundGradient, at: 0)
+    }
+    
     // MARK: - UI
+    
+    private lazy var backgroundGradient: CAGradientLayer = {
+        let setupComponent = CAGradientLayer()
+        setupComponent.type = .axial
+        setupComponent.colors = [UIColor.white.cgColor, UIColor.gray200.cgColor]
+        setupComponent.startPoint = CGPoint(x: 0, y: 0)
+        setupComponent.endPoint = CGPoint(x: 1, y: 1)
+        setupComponent.locations = [0, 1]
+        return setupComponent
+    }()
     
     private lazy var imageContainerView: UIView = {
         let setupComponent = UIView(frame: .zero)
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.layer.cornerRadius = 12
         setupComponent.backgroundColor = .white
+        setupComponent.layer.cornerRadius = 12
         setupComponent.layer.masksToBounds = false
         setupComponent.layer.shadowOpacity = 0.1
         setupComponent.layer.shadowRadius = 2
@@ -131,12 +151,10 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     }()
     
     private lazy var favoriteButton: UIButton = {
-        let normalImage =  UIImage(systemName: "heart.fill")?.withTintColor(.gray400, renderingMode: .alwaysOriginal)
-        let selectedImage = UIImage(systemName: "heart.fill")?.withTintColor(.orange500, renderingMode: .alwaysOriginal)
         let setupComponent = UIButton(frame: .zero)
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.setImage(normalImage, for: .normal)
-        setupComponent.setImage(selectedImage, for: .selected)
+        setupComponent.setImage(.heartIcon.withTintColor(.gray400), for: .normal)
+        setupComponent.setImage(.heartIcon.withTintColor(.orange500), for: .selected)
         setupComponent.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
         setupComponent.heightAnchor.constraint(equalToConstant: 20).isActive = true
         setupComponent.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -144,12 +162,10 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     }()
     
     private lazy var shoppingCartButton: UIButton = {
-        let normalImage =  UIImage(systemName: "cart.fill")?.withTintColor(.gray400, renderingMode: .alwaysOriginal)
-        let selectedImage = UIImage(systemName: "cart.fill")?.withTintColor(.orange500, renderingMode: .alwaysOriginal)
         let setupComponent = UIButton(frame: .zero)
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.setImage(normalImage, for: .normal)
-        setupComponent.setImage(selectedImage, for: .selected)
+        setupComponent.setImage(.cartIcon.withTintColor(.gray400), for: .normal)
+        setupComponent.setImage(.cartIcon.withTintColor(.orange500), for: .selected)
         setupComponent.addTarget(self, action: #selector(didTapCartButton), for: .touchUpInside)
         setupComponent.heightAnchor.constraint(equalToConstant: 20).isActive = true
         setupComponent.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -195,9 +211,9 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     
     private func makeTag(with icon: UIImage?) {
         let tagIcon = UIImageView()
-        tagIcon.image = icon
         tagIcon.translatesAutoresizingMaskIntoConstraints = false
         tagIcon.contentMode = .scaleAspectFit
+        tagIcon.image = icon
         tagIcon.heightAnchor.constraint(equalToConstant: 16).isActive = true
         tagIcon.widthAnchor.constraint(equalToConstant: 16).isActive = true
         tagStackView.addArrangedSubview(tagIcon)
@@ -301,7 +317,6 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     private func customizeView() {
         selectionStyle = .none
         backgroundColor = .clear
-        contentView.backgroundColor = .gray100
         contentView.layer.cornerRadius = 8
         
         layer.masksToBounds = false

@@ -27,10 +27,33 @@ extension UIImage {
         return initialize(with: "prime_icon")
     }
     
+    class var heartIcon: UIImage {
+        return initializeSystemIcon(with: "heart.fill")
+    }
+    
+    class var homeIcon: UIImage {
+        return initializeSystemIcon(with: "house.fill")
+    }
+    
+    class var categorieIcon: UIImage {
+        return initializeSystemIcon(with: "list.dash")
+    }
+    
+    class var accountIcon: UIImage {
+        return initializeSystemIcon(with: "person.circle")
+    }
+    
+    class var cartIcon: UIImage {
+        return initializeSystemIcon(with: "cart.fill")
+    }
     
     // MARK: - INITIALIZER
     
     fileprivate class func initialize(with name: String) -> UIImage {
         return UIImage(named: name, in: Bundle.main, compatibleWith: nil) ?? UIImage()
+    }
+    
+    fileprivate class func initializeSystemIcon(with systemName: String) -> UIImage {
+        return UIImage(systemName: systemName)?.withRenderingMode(.alwaysOriginal) ?? UIImage()
     }
 }
