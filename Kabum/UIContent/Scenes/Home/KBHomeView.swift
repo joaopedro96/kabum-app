@@ -8,7 +8,7 @@
 import UIKit
 
 protocol KBHomeViewDelegate: AnyObject {
-    func didTapProduct(with url: String)
+    func didTapProduct(with index: Int)
     func getNextProductList(for currentPage: Int)
 }
 
@@ -16,15 +16,13 @@ final class KBHomeView: UIView {
     
     // MARK: - PROPERTIES
     
+    private var currentProductPage: Int? = 1
     weak var delegate: KBHomeViewDelegate?
-    private var currentProductPage: Int? = KBRequest.firstHomePage
-    private var productList: [KBProductObject] = []
     
     // MARK: - INITIALIZER
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = .gray200
         setupView()
     }
     
@@ -39,110 +37,50 @@ final class KBHomeView: UIView {
         setupComponent.delegate = self
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
         setupComponent.contentInsetAdjustmentBehavior = .never
-        setupComponent.bounces = true
-        setupComponent.scrollsToTop = true
         setupComponent.showsVerticalScrollIndicator = false
         return setupComponent
     }()
     
-    private lazy var containerView: UIView = {
-        let setupComponent = UIView(frame: .zero)
+    private lazy var containerView: UIStackView = {
+        let setupComponent = UIStackView(frame: .zero)
+        setupComponent.translatesAutoresizingMaskIntoConstraints = false
+        setupComponent.axis = .vertical
+        return setupComponent
+    }()
+    
+    private lazy var headerSection: KBHomeHeaderSectionView = {
+        let setupComponent = KBHomeHeaderSectionView()
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
         return setupComponent
     }()
     
-    private lazy var productTitle: UILabel = {
-        let setupComponent = UILabel()
+    private lazy var tableSection: KBHomeTableSectionView = {
+        let setupComponent = KBHomeTableSectionView()
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.text = "PRODUTOS"
-        setupComponent.font = .systemFont(ofSize: 12, weight: .regular)
-        setupComponent.textColor = .blue200
-        return setupComponent
-    }()
-    
-    private lazy var offerTitle: UILabel = {
-        let setupComponent = UILabel()
-        setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.text = "Em destaque"
-        setupComponent.font = .systemFont(ofSize: 24, weight: .bold)
-        setupComponent.textColor = .gray500
-        return setupComponent
-    }()
-    
-    private lazy var productTableView: KBDynamicHeightTableView = {
-        let setupComponent = KBDynamicHeightTableView()
-        setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.register(KBHomeProductTableViewCell.self,
-                                forCellReuseIdentifier: KBHomeProductTableViewCell.identifier)
-        setupComponent.showsVerticalScrollIndicator = false
-        setupComponent.separatorColor = .clear
-        setupComponent.backgroundColor = .clear
-        setupComponent.dataSource = self
         setupComponent.delegate = self
-        setupComponent.isScrollEnabled = false
         return setupComponent
     }()
-    
-    // MARK: - PUBLIC METHODS
-    
-    func updateView(with dataModel: [KBProductObject]) {
-        productList.append(contentsOf: dataModel)
-        productTableView.reloadData()
-    }
-    
-    func updateProductNextPage(with data: [KBProductObject]) {
-        setCurrentPage(for: data)
-        setFooterView(false)
-        guard let indexPathArray = getIndexPathArray(for: data) else { return }
-        productTableView.performBatchUpdates {
-            self.productTableView.insertRows(at: indexPathArray, with: .automatic)
-        }
-    }
     
     // MARK: - PRIVATE METHODS
     
+    private func updateView(with entity: KBHomeViewEntity) {
+        headerSection.updateSection(with: entity)
+        tableSection.updateSection(with: entity.tableViewEntity)
+    }
+    
+    private func updateNextPage(with newProducts: [KBHomeTableViewCellEntity]) {
+        setCurrentPage(for: newProducts)
+        tableSection.updateNextPage(with: newProducts)
+    }
+    
     ///Update global variable 'currentProductPage' based on product list array size and offset page
-    private func setCurrentPage(for data: [KBProductObject]) {
-        if data.count != KBRequest.homePageProductsOffset {
+    private func setCurrentPage(for products: [KBHomeTableViewCellEntity]) {
+        print(products.count)
+        if products.count != 10 {
             currentProductPage = nil
         } else {
             currentProductPage! += 1
         }
-    }
-    
-    private func setFooterView(_ state: Bool) {
-        if state {
-            productTableView.tableFooterView = createSpinnerFooter()
-        } else {
-            productTableView.tableFooterView = nil
-        }
-    }
-    
-    private func createSpinnerFooter() -> UIView {
-        let screenWidth = UIScreen.main.bounds.width - 12
-        let spinnerFooter = CGRect(x: 0, y: 0, width: screenWidth, height: 100)
-        let footerView = UIView(frame: spinnerFooter)
-        let spinner = UIActivityIndicatorView(style: .large)
-        spinner.center = footerView.center
-        footerView.addSubview(spinner)
-        spinner.startAnimating()
-        return footerView
-    }
-    
-    ///Generate index path array to insert new rows of products in each of them
-    private func getIndexPathArray(for newData: [KBProductObject]) -> [IndexPath]? {
-        let currentIndex = productList.count
-        
-        productList.append(contentsOf: newData)
-        
-        let newCount = productList.count
-        
-        var indexPathArray: [IndexPath] = []
-        for index in currentIndex ..< newCount {
-            indexPathArray.append(IndexPath(row: index, section: 0))
-        }
-
-        return indexPathArray
     }
     
     // MARK: - SETUP VIEW
@@ -150,12 +88,13 @@ final class KBHomeView: UIView {
     private func setupView() {
         buildViewHierarchy()
         addConstraints()
+        customizeView()
     }
     
     private func buildViewHierarchy() {
         addSubview(scrollView)
         scrollView.addSubview(containerView)
-        containerView.addSubviews(productTitle, offerTitle, productTableView)
+        containerView.addArrangedSubviews(headerSection, tableSection)
     }
     
     private func addConstraints() {
@@ -173,53 +112,41 @@ final class KBHomeView: UIView {
             containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             containerView.widthAnchor.constraint(equalTo: widthAnchor),
-            containerViewHeightConstraint,
-            
-            productTitle.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
-            productTitle.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            productTitle.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
-            
-            offerTitle.topAnchor.constraint(equalTo: productTitle.bottomAnchor),
-            offerTitle.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 24),
-            offerTitle.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -24),
-            
-            productTableView.topAnchor.constraint(equalTo: offerTitle.bottomAnchor, constant: 24),
-            productTableView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
-            productTableView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
-            productTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            containerViewHeightConstraint
         ])
+    }
+    
+    private func customizeView() {
+        backgroundColor = .gray200
     }
 }
 
 // MARK: - EXTENSIONS
 
-extension KBHomeView: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productList.count
+extension KBHomeView: KBHomeViewProtocol {
+    func updateState(with viewState: KBHomeViewState) {
+        switch viewState {
+            case .hasData(let data):
+                updateView(with: data)
+                
+            case .hasNextPageData(let data):
+                updateNextPage(with: data)
+                
+            ///Errors should be handled here.
+            case .hasError(let error):
+                print(error)
+                
+            case .isLoading:
+                tableSection.setFooterView(true)
+                
+            default: return
+        }
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: KBHomeProductTableViewCell.identifier, for: indexPath)
-        guard let episodeCell = cell as? KBHomeProductTableViewCell else { return cell }
-        episodeCell.updateCell(with: productList[indexPath.row])
-        return episodeCell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.width * 0.5
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.didTapProduct(with: productList[indexPath.row].descriptionUrl)
-    }
-    
-    ///Define cell shadow path and fit cell to its bounds to apply radius layout
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.contentView.layer.masksToBounds = true
-        let radius = cell.contentView.layer.cornerRadius
-        cell.contentView.layer.shadowPath = UIBezierPath(roundedRect: cell.contentView.bounds, cornerRadius: radius).cgPath
+}
+
+extension KBHomeView: KBHomeTableSectionViewDelegate {    
+    func didTapProduct(with index: Int) {
+        delegate?.didTapProduct(with: index)
     }
 }
 
@@ -230,7 +157,6 @@ extension KBHomeView: UIScrollViewDelegate {
         guard let currentProductPage = currentProductPage else { return }
         let position = scrollView.contentOffset.y
         if position > (containerView.frame.height + 100 - scrollView.frame.size.height) {
-            setFooterView(true)
             delegate?.getNextProductList(for: currentProductPage)
         }
     }

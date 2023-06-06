@@ -6,21 +6,26 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol KBCoverViewControllerDelegate: AnyObject {
-    func goToHomePage(with homeData: KBHomeModel)
+    func goToHomePage(with response: KBHomeResponse)
 }
 
 final class KBCoverViewController: UIViewController {
     
     // MARK: - PROPERTIES
     
-    private let contentView: KBCoverView
-    weak var delegate: KBCoverViewControllerDelegate?
+    private let viewModel: KBCoverViewModelProtocol
+    private let contentView: KBCoverViewProtocol
     
+    weak var delegate: KBCoverViewControllerDelegate?
+    private let disposeBag = DisposeBag()
+
     // MARK: - INITIALIZERS
     
-    init(contentView: KBCoverView = KBCoverView()) {
+    init(viewModel: KBCoverViewModelProtocol, contentView: KBCoverViewProtocol = KBCoverView()) {
+        self.viewModel = viewModel
         self.contentView = contentView
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,28 +40,30 @@ final class KBCoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
-        fetchHome()
+        bindObservables()
+        viewModel.initState()
     }
     
     // MARK: - PRIVATE METHODS
     
     private func setupController() {
-        view = contentView
-        contentView.setSpinnerAnimation(true)
+        view = contentView.content
+        contentView.delegate = self
     }
     
-    private func fetchHome() {
-        let firstPage = KBRequest.firstHomePage
-        KBServiceManager.shared.execute(request: KBRequest.home(page: firstPage)) { [weak self] (result: Result<KBHomeModel, Error>) in
-            switch result {
-                case .success(let data):
-                    self?.contentView.setSpinnerAnimation(false)
-                    self?.delegate?.goToHomePage(with: data)
-                    
-                ///Errors should be handled here.
-                case .failure(let error):
-                    print(error)
-            }
-        }
+    private func bindObservables() {
+        viewModel.viewState.subscribe(onNext: { [weak self] state in
+            
+            self?.contentView.updateState(with: state)
+            
+        }).disposed(by: disposeBag)
+    }
+}
+
+// MARK: - EXTENSIONS
+
+extension KBCoverViewController: KBCoverViewDelegate {
+    func goToHomePage(with response: KBHomeResponse) {
+        delegate?.goToHomePage(with: response)
     }
 }

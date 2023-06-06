@@ -22,18 +22,16 @@ final class KBTabBarController: UITabBarController {
     
     // MARK: - PUBLIC METHODS
     
-    func addTab(viewController: UIViewController, title: String, image: UIImage) {
-        let navigationController = UINavigationController(rootViewController: viewController)
+    func addTab(tabRootController: KBBaseNavigationViewController, title: String, image: UIImage) {
+        let navController = KBSearchableNavigationController(rootViewController: tabRootController)
+        navController.navControllerDelegate = tabRootController
+
+        navController.tabBarItem = UITabBarItem(title: title,
+                                                       image: image.withTintColor(.blue100),
+                                                       selectedImage: image.withTintColor(.white))
         
-        let normalStateImage = image.withRenderingMode(.alwaysOriginal).withTintColor(.blue100)
-        let activeStateImage = image.withRenderingMode(.alwaysOriginal).withTintColor(.white)
-        navigationController.tabBarItem = UITabBarItem(title: title,
-                                                       image: normalStateImage,
-                                                       selectedImage: activeStateImage)
-        
-        navigationController.tabBarItem.tag = navigationControllers.count
-        navigationControllers.append(navigationController)
-        setupNavBarAppearance()
+        tabRootController.tabBarIndex = navigationControllers.count
+        navigationControllers.append(navController)
         
         setViewControllers(navigationControllers, animated: true)
     }
@@ -54,18 +52,5 @@ final class KBTabBarController: UITabBarController {
         if #available(iOS 15.0, *) {
             tabBar.scrollEdgeAppearance = appearance
         }
-    }
-    
-    private func setupNavBarAppearance() {
-        let navBar = navigationControllers.last?.navigationBar
-        navBar?.tintColor = .white
-        navBar?.topItem?.backButtonTitle = "Voltar"
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .theme
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBar?.standardAppearance = appearance
-        navBar?.scrollEdgeAppearance = navBar?.standardAppearance
     }
 }

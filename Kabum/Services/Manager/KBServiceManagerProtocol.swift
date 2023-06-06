@@ -10,4 +10,5 @@ import Foundation
 protocol KBServiceManagerProtocol {
     func execute<T: Decodable>(request: KBServiceRequestProtocol,
                                completion: @escaping (Result<T, Error>) -> Void)
+    func getStatusCode(request: KBServiceRequestProtocol, completion: @escaping ((Int?) -> Void))
 }

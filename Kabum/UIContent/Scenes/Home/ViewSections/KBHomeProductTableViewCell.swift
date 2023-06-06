@@ -143,7 +143,6 @@ final class KBHomeProductTableViewCell: UITableViewCell {
         let setupComponent = UIButton(frame: .zero)
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
         setupComponent.layer.cornerRadius = 4
-        setupComponent.setTitle("Comprar", for: .normal)
         setupComponent.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
         setupComponent.backgroundColor = .orange500
         setupComponent.addTarget(self, action: #selector(didTapBuyButton), for: .touchUpInside)
@@ -174,21 +173,23 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     
     // MARK: - PUBLIC METHODS
     
-    func updateCell(with cellData: KBProductObject) {
-        updateProductImage(with: cellData.image)
-        manufacturerLabel.text = cellData.manufacturer.name.uppercased()
-        nameLabel.text = cellData.name
-        discountPriceLabel.text = cellData.formattedDiscountPrice
-        installmentPriceLabel.text = "\(cellData.formattedPrice) em até 10x"
-        setTags(with: cellData)
+    func updateCell(with cellEntity: KBHomeTableViewCellEntity) {
+        updateProductImage(with: cellEntity.image)
+        manufacturerLabel.text = cellEntity.manufacturerName.uppercased()
+        nameLabel.text = cellEntity.name
+        discountPriceLabel.text = cellEntity.formattedDiscountPrice
+        installmentPriceLabel.text = cellEntity.formattedPrice
+        buyButton.setTitle(cellEntity.buyButtonTitle, for: .normal)
+        setTags(with: cellEntity)
     }
     
     // MARK: - PRIVATE METHODS
     
-    private func setTags(with cellData: KBProductObject) {
-        checkPrimeTag(for: cellData.discountPrice, and: cellData.primeDiscountPrice)
-        checkNinjaTag(for: cellData.offer)
-        checkBoxTag(for: cellData.isOpenBox)
+    private func setTags(with cellEntity: KBHomeTableViewCellEntity) {
+        checkPrimeTag(for: cellEntity.discountPrice, and: cellEntity.primeDiscountPrice)
+        checkNinjaTag(for: cellEntity.isOffer)
+        checkShippingTag(for: cellEntity.isFreeShipping)
+        checkBoxTag(for: cellEntity.isOpenBox)
     }
     
     private func checkPrimeTag(for discountPrice: String, and primeDiscountPrice: String) {
@@ -197,9 +198,15 @@ final class KBHomeProductTableViewCell: UITableViewCell {
         }
     }
     
-    private func checkNinjaTag(for offerObject: KBOfferObject?) {
-        if offerObject?.event != nil {
+    private func checkNinjaTag(for isOffer: Bool) {
+        if isOffer {
             makeTag(with: .ninjaIcon)
+        }
+    }
+    
+    private func checkShippingTag(for isFreeShipping: Bool) {
+        if isFreeShipping {
+            makeTag(with: .shippingIcon)
         }
     }
     

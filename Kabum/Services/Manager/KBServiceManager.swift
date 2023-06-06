@@ -10,13 +10,15 @@ import Alamofire
 
 final class KBServiceManager: KBServiceManagerProtocol {
     
-    ///singleton instance
-    static let shared = KBServiceManager()
+    // MARK: - PROPERTIES
+    
+    private let basePath = "https://servicespub.prod.api.aws.grupokabum.com.br"
+    
+    // MARK: - PUBLIC METHODS
     
     func execute<T: Decodable>(request: KBServiceRequestProtocol,
                                completion: @escaping (Result<T, Error>) -> Void) {
-        
-        AF.request(request.path,
+        AF.request(basePath.appending(request.path),
                    method: request.method,
                    parameters: request.parameters,
                    headers: request.headers).response { response in
@@ -39,7 +41,7 @@ final class KBServiceManager: KBServiceManagerProtocol {
     }
     
     func getStatusCode(request: KBServiceRequestProtocol, completion: @escaping ((Int?) -> Void)) {
-        AF.request(request.path,
+        AF.request(basePath.appending(request.path),
                    method: request.method,
                    parameters: request.parameters,
                    headers: request.headers).response { response in

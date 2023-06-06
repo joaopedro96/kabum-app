@@ -1,5 +1,5 @@
 //
-//  KBRequest.swift
+//  KBHomeRequest.swift
 //  Kabum
 //
 //  Created by João Pedro Mata on 30/05/23.
@@ -8,19 +8,15 @@
 import Foundation
 import Alamofire
 
-enum KBRequest: KBServiceRequestProtocol {
-    
-    static let basePath = "https://servicespub.prod.api.aws.grupokabum.com.br"
-    static let firstHomePage = 1
-    static let homePageProductsOffset = 10
+enum KBHomeRequest: KBServiceRequestProtocol {
     
     case home(page: Int)
     case productDetails(url: String)
     
     var path: String {
         switch self {
-            case .home: return "\(KBRequest.basePath)/home/v1/home/produto"
-            case .productDetails(let url): return "\(KBRequest.basePath)\(url)"
+            case .home: return "/home/v1/home/produto"
+            case .productDetails(let url): return url
         }
     }
 
@@ -33,7 +29,7 @@ enum KBRequest: KBServiceRequestProtocol {
     var parameters: [String: Any]? {
         switch self {
             case .home(let page):
-                let params = ["app": 1, "limite": KBRequest.homePageProductsOffset, "pagina": page]
+                let params = ["app": 1, "limite": 10, "pagina": page]
                 return params
             default: return nil
         }

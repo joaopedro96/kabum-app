@@ -27,6 +27,12 @@ extension UIImage {
         return initialize(with: "prime_icon")
     }
     
+    class var shippingIcon: UIImage {
+        return initialize(with: "shipping_icon")
+    }
+    
+    // MARK: - SYSTEM ICONS
+    
     class var heartIcon: UIImage {
         return initializeSystemIcon(with: "heart.fill")
     }
@@ -45,6 +51,14 @@ extension UIImage {
     
     class var cartIcon: UIImage {
         return initializeSystemIcon(with: "cart.fill")
+    }
+    
+    class var cancelIcon: UIImage {
+        return initializeSystemIcon(with: "multiply.circle")
+    }
+    
+    class var searchIcon: UIImage {
+        return initializeSystemIcon(with: "magnifyingglass")
     }
     
     // MARK: - INITIALIZER

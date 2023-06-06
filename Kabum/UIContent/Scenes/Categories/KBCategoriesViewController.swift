@@ -7,11 +7,22 @@
 
 import UIKit
 
+protocol KBCategoriesViewControllerDelegate: AnyObject {
+    func goToSearchPage(from tabIndex: Int)
+}
+
 ///View implemented only to show TabBar navigation
-final class KBCategoriesViewController: UIViewController {
+final class KBCategoriesViewController: KBBaseNavigationViewController {
+    
+    weak var delegate: KBCategoriesViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Categorias"
         view.backgroundColor = .green
+    }
+    
+    override func didTapNavigationSearchBar() {
+        guard let tabBarIndex = tabBarIndex else { return }
+        delegate?.goToSearchPage(from: tabBarIndex)
     }
 }

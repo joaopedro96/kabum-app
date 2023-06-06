@@ -12,13 +12,16 @@ final class KBFlowManager: UINavigationController {
     // MARK: - PROPERTIES
     
     private var tabBarNavControllers: [UINavigationController] = []
+    private let serviceManager: KBServiceManagerProtocol = KBServiceManager()
     
     // MARK: - INITIALIZERS
     
-    init(rootViewController: KBCoverViewController = KBCoverViewController()) {
-        super.init(rootViewController: rootViewController)
+    init() {
+        let viewModel = KBCoverViewModel(service: serviceManager)
+        let rootVC = KBCoverViewController(viewModel: viewModel)
+        super.init(rootViewController: rootVC)
         navigationBar.isHidden = true
-        rootViewController.delegate = self
+        rootVC.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,27 +30,27 @@ final class KBFlowManager: UINavigationController {
     
     // MARK: - PRIVATE METHODS
     
-    private func assembleTabBar(with data: KBHomeModel) -> UITabBarController {
+    private func assembleTabBar(with homeResponse: KBHomeResponse) -> UITabBarController {
         let tabBar = KBTabBarController()
         
-        let homeVC = makeHomeViewController(with: data)
+        let homeVC = makeHomeViewController(with: homeResponse)
         let categoriesVC = makeCategoriesViewController()
         let favoritesVC = makeFavoritesViewController()
         let accountVC = makeAccountViewController()
         
-        tabBar.addTab(viewController: homeVC,
+        tabBar.addTab(tabRootController: homeVC,
                       title: "Início",
                       image: .homeIcon)
         
-        tabBar.addTab(viewController: categoriesVC,
+        tabBar.addTab(tabRootController: categoriesVC,
                       title: "Categorias",
                       image: .categorieIcon)
         
-        tabBar.addTab(viewController: favoritesVC,
+        tabBar.addTab(tabRootController: favoritesVC,
                       title: "Favoritos",
                       image: .heartIcon)
         
-        tabBar.addTab(viewController: accountVC,
+        tabBar.addTab(tabRootController: accountVC,
                       title: "Minha Conta",
                       image: .accountIcon)
         
@@ -58,19 +61,22 @@ final class KBFlowManager: UINavigationController {
         
     // MARK: - MAKE CONTROLLERS
     
-    private func makeHomeViewController(with data: KBHomeModel) -> KBHomeViewController {
-        let viewController = KBHomeViewController(productList: data.products)
+    private func makeHomeViewController(with data: KBHomeResponse) -> KBHomeViewController {
+        let viewModel = KBHomeViewModel(service: serviceManager, homeResponse: data)
+        let viewController = KBHomeViewController(viewModel: viewModel)
         viewController.delegate = self
         return viewController
     }
     
     private func makeCategoriesViewController() -> KBCategoriesViewController {
         let viewController = KBCategoriesViewController()
+        viewController.delegate = self
         return viewController
     }
     
     private func makeFavoritesViewController() -> KBFavoritesViewController {
         let viewController = KBFavoritesViewController()
+        viewController.delegate = self
         return viewController
     }
     
@@ -80,29 +86,41 @@ final class KBFlowManager: UINavigationController {
     }
     
     private func makeProductsDetailViewController(with url: String) -> KBProductDetailsViewController {
-        let viewController = KBProductDetailsViewController(productUrl: url)
+        let viewController = KBProductDetailsViewController(productUrl: url, service: serviceManager)
         return viewController
+    }
+    
+    // MARK: - NAVIGATION BAR METHODS
+    
+    func goToSearchPage(from tabIndex: Int) {
+        let searchVC = UIViewController()
+        searchVC.view.backgroundColor = .orange
+        searchVC.title = "Pesquisar"
+        tabBarNavControllers[tabIndex].pushViewController(searchVC, animated: true)
     }
 }
 
 // MARK: - EXTENSIONS
 
 extension KBFlowManager: KBCoverViewControllerDelegate {
-    func goToHomePage(with homeData: KBHomeModel) {
+    func goToHomePage(with response: KBHomeResponse) {
         
         ///Delete CoverView from navigation stack to prevent going back to cover page
         viewControllers.removeAll()
         
-        let tabBar = assembleTabBar(with: homeData)
+        let tabBar = assembleTabBar(with: response)
         pushViewController(tabBar, animated: false)
     }
 }
 
-extension KBFlowManager: KBHomeViewControllerDelegate{
-    
+extension KBFlowManager: KBHomeViewControllerDelegate {
     ///Demonstration about how 'tabBarNavControllers' should be called
     func goToProductDetailsPage(from tabIndex: Int, with url: String) {
         let detailVC = makeProductsDetailViewController(with: url)
         tabBarNavControllers[tabIndex].pushViewController(detailVC, animated: true)
     }
 }
+
+extension KBFlowManager: KBCategoriesViewControllerDelegate { }
+
+extension KBFlowManager: KBFavoritesViewControllerDelegate { }

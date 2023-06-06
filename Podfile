@@ -8,4 +8,5 @@ target 'Kabum' do
   # Pods for Kabum
 pod 'Alamofire'
 pod 'Kingfisher'
+pod 'RxSwift' 
 end
