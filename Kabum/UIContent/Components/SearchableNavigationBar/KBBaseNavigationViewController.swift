@@ -7,18 +7,10 @@
 
 import UIKit
 
-class KBBaseNavigationViewController: UIViewController, KBNavigationControllerDelegate {
+class KBBaseNavigationViewController: UIViewController {
 
-    var tabBarIndex: Int?
+    var tabBarIndex: Int = 0
     
-    var rightImageIcon: KBNavigationCustomItemView?
-    
-    func didTapNavigationSearchBar() {
-        print("searchBarTapped")
-    }
-    
-    func didTapNavigationCartItem() {
-        print("navigationRightItemTapped")
-    }
+    var navBarRightIcon: KBNavigationCustomItemView?
     
 }

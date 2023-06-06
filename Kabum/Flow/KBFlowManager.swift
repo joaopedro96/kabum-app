@@ -38,19 +38,23 @@ final class KBFlowManager: UINavigationController {
         let favoritesVC = makeFavoritesViewController()
         let accountVC = makeAccountViewController()
         
-        tabBar.addTab(tabRootController: homeVC,
+        tabBar.addTab(flowController: self,
+                      tabRootController: homeVC,
                       title: "Início",
                       image: .homeIcon)
         
-        tabBar.addTab(tabRootController: categoriesVC,
+        tabBar.addTab(flowController: self,
+                      tabRootController: categoriesVC,
                       title: "Categorias",
                       image: .categorieIcon)
         
-        tabBar.addTab(tabRootController: favoritesVC,
+        tabBar.addTab(flowController: self,
+                      tabRootController: favoritesVC,
                       title: "Favoritos",
                       image: .heartIcon)
         
-        tabBar.addTab(tabRootController: accountVC,
+        tabBar.addTab(flowController: self,
+                      tabRootController: accountVC,
                       title: "Minha Conta",
                       image: .accountIcon)
         
@@ -70,13 +74,11 @@ final class KBFlowManager: UINavigationController {
     
     private func makeCategoriesViewController() -> KBCategoriesViewController {
         let viewController = KBCategoriesViewController()
-        viewController.delegate = self
         return viewController
     }
     
     private func makeFavoritesViewController() -> KBFavoritesViewController {
         let viewController = KBFavoritesViewController()
-        viewController.delegate = self
         return viewController
     }
     
@@ -90,9 +92,9 @@ final class KBFlowManager: UINavigationController {
         return viewController
     }
     
-    // MARK: - NAVIGATION BAR METHODS
+    // MARK: - PRIVATE METHODS
     
-    func goToSearchPage(from tabIndex: Int) {
+    private func goToSearchPage(from tabIndex: Int) {
         let searchVC = UIViewController()
         searchVC.view.backgroundColor = .orange
         searchVC.title = "Pesquisar"
@@ -101,6 +103,16 @@ final class KBFlowManager: UINavigationController {
 }
 
 // MARK: - EXTENSIONS
+
+extension KBFlowManager: KBNavigationControllerDelegate {
+    func didTapNavigationCartItem() {
+        print("navBarRightItemTapped")
+    }
+    
+    func didTapNavigationSearchBar(from tabIndex: Int) {
+        goToSearchPage(from: tabIndex)
+    }
+}
 
 extension KBFlowManager: KBCoverViewControllerDelegate {
     func goToHomePage(with response: KBHomeResponse) {
@@ -120,7 +132,3 @@ extension KBFlowManager: KBHomeViewControllerDelegate {
         tabBarNavControllers[tabIndex].pushViewController(detailVC, animated: true)
     }
 }
-
-extension KBFlowManager: KBCategoriesViewControllerDelegate { }
-
-extension KBFlowManager: KBFavoritesViewControllerDelegate { }

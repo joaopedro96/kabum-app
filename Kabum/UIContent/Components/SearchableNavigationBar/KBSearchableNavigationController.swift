@@ -1,5 +1,5 @@
 //
-//  KBNSearchableNavigationController.swift
+//  KBSearchableNavigationController.swift
 //  Kabum
 //
 //  Created by João Pedro Mata on 05/06/23.
@@ -9,7 +9,7 @@ import UIKit
 
 protocol KBNavigationControllerDelegate: AnyObject {
     func didTapNavigationCartItem()
-    func didTapNavigationSearchBar()
+    func didTapNavigationSearchBar(from tabIndex: Int)
 }
 
 final class KBSearchableNavigationController: UINavigationController {
@@ -45,7 +45,7 @@ final class KBSearchableNavigationController: UINavigationController {
         
         let rightIcon = KBNavigationCustomItemView()
         rightIcon.delegate = self
-        rootViewController.rightImageIcon = rightIcon
+        rootViewController.navBarRightIcon = rightIcon
         
         navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
         navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(customView: rightIcon)
@@ -70,7 +70,7 @@ final class KBSearchableNavigationController: UINavigationController {
 
 extension KBSearchableNavigationController: KBNavigationSearchBarDelegate {
     func didTapNavigationSearchBar() {
-        navControllerDelegate?.didTapNavigationSearchBar()
+        navControllerDelegate?.didTapNavigationSearchBar(from: rootViewController.tabBarIndex)
     }
 }
 

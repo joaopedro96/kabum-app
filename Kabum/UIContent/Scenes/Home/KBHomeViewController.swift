@@ -10,7 +10,6 @@ import RxSwift
 
 protocol KBHomeViewControllerDelegate: AnyObject {
     func goToProductDetailsPage(from tabIndex: Int, with url: String)
-    func goToSearchPage(from tabIndex: Int)
 }
 
 final class KBHomeViewController: KBBaseNavigationViewController {
@@ -46,13 +45,6 @@ final class KBHomeViewController: KBBaseNavigationViewController {
         viewModel.initState()
     }
     
-    // MARK: - OVERRIDE METHODS
-    
-    override func didTapNavigationSearchBar() {
-        guard let tabBarIndex = tabBarIndex else { return }
-        delegate?.goToSearchPage(from: tabBarIndex)
-    }
-    
     // MARK: - PRIVATE METHODS
     
     private func setupController() {
@@ -73,7 +65,6 @@ final class KBHomeViewController: KBBaseNavigationViewController {
 
 extension KBHomeViewController: KBHomeViewDelegate {
     func didTapProduct(with index: Int) {
-        guard let tabBarIndex = tabBarIndex else { return }
         let url = viewModel.getProductDescriptionUrl(for: index)
         delegate?.goToProductDetailsPage(from: tabBarIndex, with: url)
     }
