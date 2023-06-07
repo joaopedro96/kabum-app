@@ -7,17 +7,11 @@
 
 import UIKit
 
-protocol KBNavigationControllerDelegate: AnyObject {
-    func didTapNavigationCartItem()
-    func didTapNavigationSearchBar(from tabIndex: Int)
-}
-
 final class KBSearchableNavigationController: UINavigationController {
     
     // MARK: - PROPERTIES
     
     let rootViewController: KBBaseNavigationViewController
-    weak var navControllerDelegate: KBNavigationControllerDelegate?
     
     // MARK: - INITIALIZERS
 
@@ -70,12 +64,12 @@ final class KBSearchableNavigationController: UINavigationController {
 
 extension KBSearchableNavigationController: KBNavigationSearchBarDelegate {
     func didTapNavigationSearchBar() {
-        navControllerDelegate?.didTapNavigationSearchBar(from: rootViewController.tabBarIndex)
+        rootViewController.didTapNavigationSearchBar()
     }
 }
 
 extension KBSearchableNavigationController: KBNavigationBarCustomItemViewDelegate {
     func didTapNavigationItem() {
-        navControllerDelegate?.didTapNavigationCartItem()
+        rootViewController.didTapNavigationCartItem()
     }
 }

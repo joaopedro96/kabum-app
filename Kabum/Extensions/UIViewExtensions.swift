@@ -27,4 +27,25 @@ extension UIView {
             trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -bottom)
         ])
     }
+    
+    func setBadge(for value: Int) {
+        removeBadge()
+        if value != 0 {
+            addBadge(for: value)
+        }
+    }
+    
+    private func addBadge(for value: Int) {
+        let badge = KBBadgeLabel(value: value)
+        addSubview(badge)
+        badge.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        badge.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    private func removeBadge() {
+        subviews.forEach { view in
+            let badge = view as? KBBadgeLabel
+            badge?.removeFromSuperview()
+        }
+    }
 }

@@ -64,13 +64,22 @@ final class KBHomeViewController: KBBaseNavigationViewController {
 // MARK: - EXTENSIONS
 
 extension KBHomeViewController: KBHomeViewDelegate {
+    func getNextProductList(for currentPage: Int) {
+        let nextPage = currentPage + 1
+        viewModel.getProductData(for: nextPage)
+    }
+    
     func didTapProduct(with index: Int) {
         let url = viewModel.getProductDescriptionUrl(for: index)
         delegate?.goToProductDetailsPage(from: tabBarIndex, with: url)
     }
     
-    func getNextProductList(for currentPage: Int) {
-        let nextPage = currentPage + 1
-        viewModel.getProductData(for: nextPage)
+    func didTapFavoriteButton(with state: Bool, and index: Int) {
+        print("favoriteButtonTapped")
+    }
+    
+    func didTapShoppingCartButton(with state: Bool, and index: Int) {
+        let productCode = viewModel.getProductCode(for: index)
+        state ? addProductToCart(with: productCode) : removeProductFromCart(with: productCode)
     }
 }

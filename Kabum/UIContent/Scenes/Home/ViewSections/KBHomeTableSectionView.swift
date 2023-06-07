@@ -9,6 +9,8 @@ import UIKit
 
 protocol KBHomeTableSectionViewDelegate: AnyObject {
     func didTapProduct(with index: Int)
+    func didTapFavoriteButton(with state: Bool, and index: Int)
+    func didTapShoppingCartButton(with state: Bool, and index: Int)
 }
 
 final class KBHomeTableSectionView: UIView {
@@ -121,6 +123,8 @@ extension KBHomeTableSectionView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: KBHomeProductTableViewCell.identifier, for: indexPath)
         guard let productCell = cell as? KBHomeProductTableViewCell else { return cell }
         productCell.updateCell(with: productList[indexPath.row])
+        productCell.cellIndex = indexPath.row
+        productCell.delegate = self
         return productCell
     }
     
@@ -138,5 +142,19 @@ extension KBHomeTableSectionView: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.layer.masksToBounds = true
         let radius = cell.contentView.layer.cornerRadius
         cell.contentView.layer.shadowPath = UIBezierPath(roundedRect: cell.contentView.bounds, cornerRadius: radius).cgPath
+    }
+}
+
+extension KBHomeTableSectionView: KBHomeProductTableViewCellDelegate {
+    func didTapBuyButton() {
+        print("buy button tapped")
+    }
+    
+    func didTapFavoriteButton(with state: Bool, and index: Int) {
+        delegate?.didTapFavoriteButton(with: state, and: index)
+    }
+    
+    func didTapShoppingCartButton(with state: Bool, and index: Int) {
+        delegate?.didTapShoppingCartButton(with: state, and: index)
     }
 }

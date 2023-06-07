@@ -8,11 +8,19 @@
 import Kingfisher
 import UIKit
 
+protocol KBHomeProductTableViewCellDelegate: AnyObject {
+    func didTapBuyButton()
+    func didTapFavoriteButton(with state: Bool, and index: Int)
+    func didTapShoppingCartButton(with state: Bool, and index: Int)
+}
+
 final class KBHomeProductTableViewCell: UITableViewCell {
     
     // MARK: - PROPERTIES
     
     static let identifier = "KBHomeProductTableViewCell"
+    weak var delegate: KBHomeProductTableViewCellDelegate?
+    var cellIndex: Int = 0
     
     // MARK: - INITIALIZER
     
@@ -177,7 +185,7 @@ final class KBHomeProductTableViewCell: UITableViewCell {
         updateProductImage(with: cellEntity.image)
         manufacturerLabel.text = cellEntity.manufacturerName.uppercased()
         nameLabel.text = cellEntity.name
-        discountPriceLabel.text = cellEntity.formattedDiscountPrice
+        discountPriceLabel.text = cellEntity.discountPrice.toCurrency()
         installmentPriceLabel.text = cellEntity.formattedPrice
         buyButton.setTitle(cellEntity.buyButtonTitle, for: .normal)
         setTags(with: cellEntity)
@@ -232,17 +240,17 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     }
     
     @objc private func didTapBuyButton() {
-        print("buy button tapped")
+        delegate?.didTapBuyButton()
     }
     
     @objc private func didTapFavoriteButton() {
         favoriteButton.isSelected.toggle()
-        print("favorite button tapped")
+        delegate?.didTapFavoriteButton(with: favoriteButton.isSelected, and: cellIndex)
     }
 
     @objc private func didTapCartButton() {
         shoppingCartButton.isSelected.toggle()
-        print("shopping cart button tapped")
+        delegate?.didTapShoppingCartButton(with: shoppingCartButton.isSelected, and: cellIndex)
     }
     
     // MARK: - SETUP VIEW

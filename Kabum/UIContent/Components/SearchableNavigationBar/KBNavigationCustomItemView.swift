@@ -60,13 +60,19 @@ final class KBNavigationCustomItemView: UIView {
     }
     
     private func addConstraints() {
+        let maxWidth = image.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1)
+        maxWidth.priority = .required
+        
+        let maxHeight = image.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1)
+        maxHeight.priority = .required
+        
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: topAnchor),
             image.leadingAnchor.constraint(equalTo: leadingAnchor),
             image.trailingAnchor.constraint(equalTo: trailingAnchor),
             image.bottomAnchor.constraint(equalTo: bottomAnchor),
-            image.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1),
-            image.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.1)
+            maxHeight,
+            maxWidth
         ])
     }
 }

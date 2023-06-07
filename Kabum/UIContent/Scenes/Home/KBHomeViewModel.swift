@@ -40,6 +40,11 @@ final class KBHomeViewModel: KBHomeViewModelProtocol {
         return descriptionUrl
     }
     
+    func getProductCode(for index: Int) -> Int {
+        let productCode = homeResponse.products[index].code
+        return productCode
+    }
+    
     // MARK: - FETCH METHODS
     
     private func fetchProducts(for page: Int) {

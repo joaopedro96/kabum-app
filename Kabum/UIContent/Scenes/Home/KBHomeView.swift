@@ -8,8 +8,10 @@
 import UIKit
 
 protocol KBHomeViewDelegate: AnyObject {
-    func didTapProduct(with index: Int)
     func getNextProductList(for currentPage: Int)
+    func didTapProduct(with index: Int)
+    func didTapFavoriteButton(with state: Bool, and index: Int)
+    func didTapShoppingCartButton(with state: Bool, and index: Int)
 }
 
 final class KBHomeView: UIView {
@@ -144,9 +146,17 @@ extension KBHomeView: KBHomeViewProtocol {
     }
 }
 
-extension KBHomeView: KBHomeTableSectionViewDelegate {    
+extension KBHomeView: KBHomeTableSectionViewDelegate {
     func didTapProduct(with index: Int) {
         delegate?.didTapProduct(with: index)
+    }
+    
+    func didTapFavoriteButton(with state: Bool, and index: Int) {
+        delegate?.didTapFavoriteButton(with: state, and: index)
+    }
+    
+    func didTapShoppingCartButton(with state: Bool, and index: Int) {
+        delegate?.didTapShoppingCartButton(with: state, and: index)
     }
 }
 

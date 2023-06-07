@@ -45,6 +45,8 @@
 		CF8EDCF22A267492008F6C71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EDCF12A267492008F6C71 /* SceneDelegate.swift */; };
 		CF8EDCF92A267492008F6C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCF82A267492008F6C71 /* Assets.xcassets */; };
 		CF8EDCFC2A267492008F6C71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCFA2A267492008F6C71 /* LaunchScreen.storyboard */; };
+		CFAA1F292A2F852E0022C8E9 /* KBBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA1F282A2F852E0022C8E9 /* KBBadgeLabel.swift */; };
+		CFAA1F2B2A2FC9E20022C8E9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA1F2A2A2FC9E20022C8E9 /* StringExtensions.swift */; };
 		CFCDF71D2A279AF100BC7BED /* KBHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */; };
 		CFCDF7202A279D3E00BC7BED /* KBDynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF71F2A279D3E00BC7BED /* KBDynamicHeightTableView.swift */; };
 		CFCDF7222A279DC000BC7BED /* KBHomeProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */; };
@@ -106,6 +108,8 @@
 		CF8EDCF82A267492008F6C71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8EDCFB2A267492008F6C71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF8EDCFD2A267492008F6C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFAA1F282A2F852E0022C8E9 /* KBBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBadgeLabel.swift; sourceTree = "<group>"; };
+		CFAA1F2A2A2FC9E20022C8E9 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeView.swift; sourceTree = "<group>"; };
 		CFCDF71F2A279D3E00BC7BED /* KBDynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBDynamicHeightTableView.swift; sourceTree = "<group>"; };
 		CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeProductTableViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */,
 				CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */,
 				CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */,
+				CFAA1F2A2A2FC9E20022C8E9 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 		CF7CE8DF2A26BA0A00390C19 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CFAA1F252A2F85100022C8E9 /* Badge */,
 				CF82BA912A2EC2D4000096D9 /* SearchableNavigationBar */,
 				CFCDF71E2A279D2300BC7BED /* DynamicTableView */,
 				CF7CE8E22A26BA2B00390C19 /* TabBar */,
@@ -407,6 +413,14 @@
 			path = Kabum;
 			sourceTree = "<group>";
 		};
+		CFAA1F252A2F85100022C8E9 /* Badge */ = {
+			isa = PBXGroup;
+			children = (
+				CFAA1F282A2F852E0022C8E9 /* KBBadgeLabel.swift */,
+			);
+			path = Badge;
+			sourceTree = "<group>";
+		};
 		CFCDF71E2A279D2300BC7BED /* DynamicTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +593,7 @@
 				CF7CE8D92A26B93700390C19 /* UIImageExtensions.swift in Sources */,
 				CF7CE8C52A268A0000390C19 /* KBFlowManager.swift in Sources */,
 				CF8303C12A2CE8ED00FE3AB0 /* KBHomeViewEntity.swift in Sources */,
+				CFAA1F2B2A2FC9E20022C8E9 /* StringExtensions.swift in Sources */,
 				CF4D50092A2D0C8800A30536 /* KBHomeViewState.swift in Sources */,
 				CF4D50012A2CF91A00A30536 /* KBCoverViewModelProtocol.swift in Sources */,
 				CF4D500B2A2D0C9800A30536 /* KBHomeViewModelProtocol.swift in Sources */,
@@ -600,6 +615,7 @@
 				CF013C662A26DBDD003548E2 /* KBCoverView.swift in Sources */,
 				CF8EDCF22A267492008F6C71 /* SceneDelegate.swift in Sources */,
 				CF7CE8F32A26BFBA00390C19 /* KBCategoriesViewController.swift in Sources */,
+				CFAA1F292A2F852E0022C8E9 /* KBBadgeLabel.swift in Sources */,
 				CF8303CA2A2CF3DC00FE3AB0 /* KBHomeViewProtocol.swift in Sources */,
 				CF82BA932A2EC2F3000096D9 /* KBSearchableNavigationController.swift in Sources */,
 				CF82BA8A2A2E0EFC000096D9 /* KBNavigationSearchBarView.swift in Sources */,

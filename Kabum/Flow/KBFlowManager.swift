@@ -38,23 +38,19 @@ final class KBFlowManager: UINavigationController {
         let favoritesVC = makeFavoritesViewController()
         let accountVC = makeAccountViewController()
         
-        tabBar.addTab(flowController: self,
-                      tabRootController: homeVC,
+        tabBar.addTab(tabRootController: homeVC,
                       title: "Início",
                       image: .homeIcon)
         
-        tabBar.addTab(flowController: self,
-                      tabRootController: categoriesVC,
+        tabBar.addTab(tabRootController: categoriesVC,
                       title: "Categorias",
                       image: .categorieIcon)
         
-        tabBar.addTab(flowController: self,
-                      tabRootController: favoritesVC,
+        tabBar.addTab(tabRootController: favoritesVC,
                       title: "Favoritos",
                       image: .heartIcon)
         
-        tabBar.addTab(flowController: self,
-                      tabRootController: accountVC,
+        tabBar.addTab(tabRootController: accountVC,
                       title: "Minha Conta",
                       image: .accountIcon)
         
@@ -68,22 +64,26 @@ final class KBFlowManager: UINavigationController {
     private func makeHomeViewController(with data: KBHomeResponse) -> KBHomeViewController {
         let viewModel = KBHomeViewModel(service: serviceManager, homeResponse: data)
         let viewController = KBHomeViewController(viewModel: viewModel)
+        viewController.navigationDelegate = self
         viewController.delegate = self
         return viewController
     }
     
     private func makeCategoriesViewController() -> KBCategoriesViewController {
         let viewController = KBCategoriesViewController()
+        viewController.navigationDelegate = self
         return viewController
     }
     
     private func makeFavoritesViewController() -> KBFavoritesViewController {
         let viewController = KBFavoritesViewController()
+        viewController.navigationDelegate = self
         return viewController
     }
     
     private func makeAccountViewController() -> KBAccountViewController {
         let viewController = KBAccountViewController()
+        viewController.navigationDelegate = self
         return viewController
     }
     
@@ -100,17 +100,37 @@ final class KBFlowManager: UINavigationController {
         searchVC.title = "Pesquisar"
         tabBarNavControllers[tabIndex].pushViewController(searchVC, animated: true)
     }
+    
+    private func presentShoppingCartPage() {
+        let shoppingCartVC = UIViewController()
+        shoppingCartVC.view.backgroundColor = .gray200
+        present(shoppingCartVC, animated: true)
+    }
 }
 
 // MARK: - EXTENSIONS
 
-extension KBFlowManager: KBNavigationControllerDelegate {
+extension KBFlowManager: KBBaseNavigationViewControllerDelegate {
     func didTapNavigationCartItem() {
-        print("navBarRightItemTapped")
+        presentShoppingCartPage()
     }
     
     func didTapNavigationSearchBar(from tabIndex: Int) {
         goToSearchPage(from: tabIndex)
+    }
+    
+    func appendProductToCartList(for productCode: Int) {
+        tabBarNavControllers.forEach { navigationController in
+            let navController = navigationController as? KBSearchableNavigationController
+            navController?.rootViewController.shoppingCartList.append(productCode)
+        }
+    }
+    
+    func removeProductFromCartList(for productCode: Int) {
+        tabBarNavControllers.forEach { navigationController in
+            let navController = navigationController as? KBSearchableNavigationController
+            navController?.rootViewController.shoppingCartList.removeAll(where: { $0 == productCode } )
+        }
     }
 }
 
@@ -126,6 +146,7 @@ extension KBFlowManager: KBCoverViewControllerDelegate {
 }
 
 extension KBFlowManager: KBHomeViewControllerDelegate {
+    
     ///Demonstration about how 'tabBarNavControllers' should be called
     func goToProductDetailsPage(from tabIndex: Int, with url: String) {
         let detailVC = makeProductsDetailViewController(with: url)

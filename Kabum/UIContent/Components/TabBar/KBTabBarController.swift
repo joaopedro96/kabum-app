@@ -22,16 +22,12 @@ final class KBTabBarController: UITabBarController {
     
     // MARK: - PUBLIC METHODS
     
-    func addTab(flowController: KBFlowManager,
-                tabRootController: KBBaseNavigationViewController,
-                title: String,
-                image: UIImage) {
+    func addTab(tabRootController: KBBaseNavigationViewController, title: String, image: UIImage) {
         let navController = KBSearchableNavigationController(rootViewController: tabRootController)
-        navController.navControllerDelegate = flowController
-
+        
         navController.tabBarItem = UITabBarItem(title: title,
-                                                       image: image.withTintColor(.blue100),
-                                                       selectedImage: image.withTintColor(.white))
+                                                image: image.withTintColor(.blue100),
+                                                selectedImage: image.withTintColor(.white))
         
         tabRootController.tabBarIndex = navigationControllers.count
         navigationControllers.append(navController)
