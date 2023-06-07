@@ -24,6 +24,7 @@ Adicionalmente a tabela de produtos foi também implementado as seguintes featur
 - Splash Screen
 - Loading Screen
 - Barra de navegação (com search bar e icone de carrinho de compras)
+- Badge icon adicionado para contagem dos produtos no carrinho de compra
 - Tab Bar (constando os 4 itens conforme aplicativo original e uma tela modelo para exemplo de navegação)
 - Demonstração da navegação para tela de “Detalhes do Produto” ao clicar em qualquer célula da tabela
 
