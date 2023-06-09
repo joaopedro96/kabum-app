@@ -92,8 +92,8 @@ extension KBCoverView: KBCoverViewProtocol {
                 delegate?.goToHomePage(with: response)
                 
             ///Errors should be handled here.
-            case .hasError(let error):
-                print(error)
+            case .hasError:
+                return
                 
             case .isLoading:
                 setSpinnerAnimation(true)

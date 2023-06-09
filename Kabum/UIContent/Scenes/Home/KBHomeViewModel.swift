@@ -81,7 +81,7 @@ final class KBHomeViewModel: KBHomeViewModelProtocol {
             KBHomeTableViewCellEntity(name: product.name,
                                       image: product.image,
                                       manufacturerName: product.manufacturer.name,
-                                      formattedPrice: product.formattedPrice + "em até 10x",
+                                      formattedPrice: product.formattedPrice + " em até 10x",
                                       formattedDiscountPrice: product.formattedDiscountPrice,
                                       discountPrice: product.discountPrice,
                                       primeDiscountPrice: product.primeDiscountPrice,

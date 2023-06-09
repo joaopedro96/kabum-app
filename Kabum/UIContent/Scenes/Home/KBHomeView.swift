@@ -77,7 +77,6 @@ final class KBHomeView: UIView {
     
     ///Update global variable 'currentProductPage' based on product list array size and offset page
     private func setCurrentPage(for products: [KBHomeTableViewCellEntity]) {
-        print(products.count)
         if products.count != 10 {
             currentProductPage = nil
         } else {

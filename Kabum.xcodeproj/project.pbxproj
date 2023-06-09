@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF013C662A26DBDD003548E2 /* KBCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF013C652A26DBDD003548E2 /* KBCoverView.swift */; };
+		CF10BD122A3295B300E24D34 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10BD112A3295B300E24D34 /* DataExtensions.swift */; };
 		CF4D50012A2CF91A00A30536 /* KBCoverViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D50002A2CF91A00A30536 /* KBCoverViewModelProtocol.swift */; };
 		CF4D50052A2CFCCC00A30536 /* KBCoverViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D50042A2CFCCC00A30536 /* KBCoverViewState.swift */; };
 		CF4D50072A2CFCE500A30536 /* KBCoverViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D50062A2CFCE500A30536 /* KBCoverViewProtocol.swift */; };
@@ -68,6 +69,7 @@
 		42AD1CE96F3970F6A1A46CD7 /* Pods-Kabum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kabum.release.xcconfig"; path = "Target Support Files/Pods-Kabum/Pods-Kabum.release.xcconfig"; sourceTree = "<group>"; };
 		6EE387A728714A52183C0992 /* Pods-Kabum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kabum.debug.xcconfig"; path = "Target Support Files/Pods-Kabum/Pods-Kabum.debug.xcconfig"; sourceTree = "<group>"; };
 		CF013C652A26DBDD003548E2 /* KBCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverView.swift; sourceTree = "<group>"; };
+		CF10BD112A3295B300E24D34 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		CF4D50002A2CF91A00A30536 /* KBCoverViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverViewModelProtocol.swift; sourceTree = "<group>"; };
 		CF4D50042A2CFCCC00A30536 /* KBCoverViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KBCoverViewState.swift; path = ../../../../../../../../.Trash/KBCoverViewState.swift; sourceTree = "<group>"; };
 		CF4D50062A2CFCE500A30536 /* KBCoverViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KBCoverViewProtocol.swift; path = ../../../../../../../../.Trash/KBCoverViewProtocol.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */,
 				CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */,
 				CFAA1F2A2A2FC9E20022C8E9 /* StringExtensions.swift */,
+				CF10BD112A3295B300E24D34 /* DataExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				CF82BA8A2A2E0EFC000096D9 /* KBNavigationSearchBarView.swift in Sources */,
 				CF7CE8CE2A268AC000390C19 /* KBServiceManagerProtocol.swift in Sources */,
 				CF4D50052A2CFCCC00A30536 /* KBCoverViewState.swift in Sources */,
+				CF10BD122A3295B300E24D34 /* DataExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
