@@ -27,7 +27,7 @@ final class KBServiceManager: KBServiceManagerProtocol {
                         let decodedData = try decoder.decode(T.self, from: data)
                         completion(.success(decodedData))
                     } catch {
-                        print(error)
+                        self?.logParseError(for: error)
                         completion(.failure(error))
                     }
                     

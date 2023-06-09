@@ -13,6 +13,7 @@ protocol KBServiceManagerProtocol {
                                completion: @escaping (Result<T, Error>) -> Void)
     func getStatusCode(request: KBServiceRequestProtocol, completion: @escaping ((Int?) -> Void))
     func logRequest(with response: AFDataResponse<Data?>, data: Data?, error: Error?)
+    func logParseError(for error: Error)
 }
 
 extension KBServiceManagerProtocol {
@@ -33,6 +34,11 @@ extension KBServiceManagerProtocol {
         } else if let error = error {
             print(error)
         }
+    }
+    
+    func logParseError(for error: Error) {
+        print("\n-------------------------PARSE ERROR--------------------------")
+        print(error)
     }
     
 }
