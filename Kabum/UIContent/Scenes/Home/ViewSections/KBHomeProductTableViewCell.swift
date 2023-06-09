@@ -201,7 +201,10 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     }
     
     private func checkPrimeTag(for discountPrice: String, and primeDiscountPrice: String) {
-        if primeDiscountPrice < discountPrice && primeDiscountPrice != "0.00" {
+        guard let primeDiscountPrice = Double(primeDiscountPrice),
+              let discountPrice = Double(discountPrice) else { return }
+        
+        if (primeDiscountPrice < discountPrice) && (primeDiscountPrice != 0.00) {
             makeTag(with: .primeIcon)
         }
     }
