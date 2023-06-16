@@ -41,4 +41,3 @@ enum KBHomeRequest: KBServiceRequestProtocol {
         }
     }
 }
-
