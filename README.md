@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  <img width="25%" src= "https://github.com/joaopedro96/kabum-app/assets/84334801/b387408a-0fc3-47d8-b0a8-bdfc6ea66cdb" />
+  <img width="25%" src= "https://github.com/joaopedro96/kabum-app/assets/84334801/7fdb6a34-f279-4d19-b407-18600134f62e" />
 </p>
 
 
@@ -23,7 +23,8 @@ Adicionalmente a tabela de produtos foi também implementado as seguintes featur
 - Icone do aplicativo
 - Splash Screen
 - Loading Screen
-- Barra de navegação
+- Barra de navegação (com search bar e icone de carrinho de compras)
+- Badge icon adicionado para contagem dos produtos no carrinho de compra
 - Tab Bar (constando os 4 itens conforme aplicativo original e uma tela modelo para exemplo de navegação)
 - Demonstração da navegação para tela de “Detalhes do Produto” ao clicar em qualquer célula da tabela
 
@@ -50,9 +51,9 @@ As seguintes configurações foram definidas para este projeto:
 Os seguintes recursos foram utilizados no desenvolvimento deste projeto:
 - Swift
 - UIKit
-- MVC
-- Cocoapods (Alamofire / Kingfisher)
+- MVVM
+- Cocoapods (Alamofire / Kingfisher, RxSwift)
 - View Code
 - Autolayout
 - Delegate Pattern
-- Singleton Pattern
+- Dependency Injection

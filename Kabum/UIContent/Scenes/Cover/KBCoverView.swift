@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol KBCoverViewDelegate: AnyObject {
+    func goToHomePage(with response: KBHomeResponse)
+}
+
 final class KBCoverView: UIView {
+    
+    // MARK: - PROPERTIES
+    
+    weak var delegate: KBCoverViewDelegate?
     
     // MARK: - INITIALIZER
     
@@ -33,15 +41,13 @@ final class KBCoverView: UIView {
     private lazy var spinner: UIActivityIndicatorView = {
         let setupComponent = UIActivityIndicatorView(style: .large)
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
-        setupComponent.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        setupComponent.heightAnchor.constraint(equalToConstant: 100).isActive = true
         setupComponent.color = .white
         return setupComponent
     }()
     
-    // MARK: - PUBLIC METHODS
+    // MARK: - PRIVATE METHODS
     
-    func setSpinnerAnimation(_ state: Bool) {
+    private func setSpinnerAnimation(_ state: Bool) {
         state ? spinner.startAnimating() : spinner.stopAnimating()
     }
     
@@ -65,11 +71,34 @@ final class KBCoverView: UIView {
             image.heightAnchor.constraint(equalToConstant: 70),
 
             spinner.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 60),
-            spinner.centerXAnchor.constraint(equalTo: centerXAnchor)
+            spinner.centerXAnchor.constraint(equalTo: centerXAnchor),
+            spinner.widthAnchor.constraint(equalToConstant: 100),
+            spinner.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
     
     private func customizeView() {
         backgroundColor = .theme
+    }
+}
+
+// MARK: - EXTENSIONS
+
+extension KBCoverView: KBCoverViewProtocol {
+    func updateState(with viewState: KBCoverViewState) {
+        switch viewState {
+            case .hasData(let response):
+                setSpinnerAnimation(false)
+                delegate?.goToHomePage(with: response)
+                
+            ///Errors should be handled here.
+            case .hasError:
+                return
+                
+            case .isLoading:
+                setSpinnerAnimation(true)
+                
+            default: return
+        }
     }
 }

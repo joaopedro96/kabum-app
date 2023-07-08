@@ -6,25 +6,28 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol KBHomeViewControllerDelegate: AnyObject {
     func goToProductDetailsPage(from tabIndex: Int, with url: String)
 }
 
-final class KBHomeViewController: UIViewController {
+final class KBHomeViewController: KBBaseNavigationViewController {
     
     // MARK: - PROPERTIES
     
-    private let contentView: KBHomeView
-    private let productList: [KBProductObject]
+    private let viewModel: KBHomeViewModelProtocol
+    private let contentView: KBHomeViewProtocol
+
     weak var delegate: KBHomeViewControllerDelegate?
+    private let disposeBag = DisposeBag()
     
     // MARK: - INITIALIZERS
     
-    init(contentView: KBHomeView = KBHomeView(),
-         productList: [KBProductObject]) {
+    init(viewModel: KBHomeViewModelProtocol,
+         contentView: KBHomeViewProtocol = KBHomeView()) {
+        self.viewModel = viewModel
         self.contentView = contentView
-        self.productList = productList
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,41 +41,45 @@ final class KBHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
+        bindObservables()
+        viewModel.initState()
     }
     
     // MARK: - PRIVATE METHODS
     
     private func setupController() {
-        view = contentView
-        title = "Home"
+        view = contentView.content
         contentView.delegate = self
-        contentView.updateView(with: productList)
     }
     
-    private func fetchProducts(for page: Int) {
-        KBServiceManager.shared.execute(request: KBRequest.home(page: page)) { [weak self] (result: Result<KBHomeModel, Error>) in
-            switch result {
-                case .success(let data):
-                    self?.contentView.updateProductNextPage(with: data.products)
-                    
-                ///Errors should be handled here.
-                case .failure(let error):
-                    print(error)
-            }
-        }
+    private func bindObservables() {
+        viewModel.viewState.subscribe(onNext: { [weak self] state in
+            
+            self?.contentView.updateState(with: state)
+            
+        }).disposed(by: disposeBag)
     }
 }
-
+    
 // MARK: - EXTENSIONS
 
 extension KBHomeViewController: KBHomeViewDelegate {
     func getNextProductList(for currentPage: Int) {
         let nextPage = currentPage + 1
-        fetchProducts(for: nextPage)
+        viewModel.getProductData(for: nextPage)
     }
     
-    func didTapProduct(with url: String) {
-        guard let tabIndex = navigationController?.tabBarItem.tag else { return }
-        delegate?.goToProductDetailsPage(from: tabIndex, with: url)
+    func didTapProduct(with index: Int) {
+        let url = viewModel.getProductDescriptionUrl(for: index)
+        delegate?.goToProductDetailsPage(from: tabBarIndex, with: url)
+    }
+    
+    func didTapFavoriteButton(with state: Bool, and index: Int) {
+        print("favoriteButtonTapped")
+    }
+    
+    func didTapShoppingCartButton(with state: Bool, and index: Int) {
+        let productCode = viewModel.getProductCode(for: index)
+        state ? addProductToCart(with: productCode) : removeProductFromCart(with: productCode)
     }
 }

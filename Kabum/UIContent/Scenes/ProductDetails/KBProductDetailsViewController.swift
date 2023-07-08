@@ -13,11 +13,13 @@ final class KBProductDetailsViewController: UIViewController {
     // MARK: - PROPERTIES
     
     let productUrl: String
+    let service: KBServiceManagerProtocol
     
     // MARK: - INITIALIZERS
     
-    init(productUrl: String) {
+    init(productUrl: String, service: KBServiceManagerProtocol) {
         self.productUrl = productUrl
+        self.service = service
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,10 +41,15 @@ final class KBProductDetailsViewController: UIViewController {
     
     ///Product endpoint without authetication to complete request
     private func fetchProductDetails() {
-        KBServiceManager.shared.getStatusCode(request: KBRequest.productDetails(url: productUrl)) { statusCode in
-            guard let statusCode = statusCode else { return }
-            print("URL: \(KBRequest.basePath)\(self.productUrl)")
-            print("Request status code: \(statusCode)\n")
+        service.execute(request: KBHomeRequest.productDetails(url: productUrl)) { (result: Result<ProductDetailsResponse, Error>) in
+            switch result {
+                case .success(let data):
+                    print(data)
+                case .failure:
+                    return
+            }
         }
     }
 }
+
+struct ProductDetailsResponse: Codable { }

@@ -7,12 +7,16 @@
 
 import Foundation
 
-struct KBHomeModel: Codable {
+struct KBHomeResponse: Codable {
+    var products: [KBProductObject]
+    
+    ///All the attributes listed below wont be used in this project. They are only shown to demonstrate how they should be declared
     let success: Bool
-    let products: [KBProductObject]
+    let blackFridayFlag: Int
     
     enum CodingKeys: String, CodingKey {
         case success = "sucesso"
+        case blackFridayFlag = "flag_blackfriday"
         case products = "produtos"
     }
 }
@@ -27,11 +31,11 @@ struct KBProductObject: Codable {
     let formattedDiscountPrice: String
     let manufacturer: KBManufacturerObject
     let isOpenBox: Bool
+    let freeShipping: Bool
 
     ///All the attributes listed below wont be used in this project. They are only shown to demonstrate how they should be declared
     let code: Int
     let alt: Int
-    let freeShipping: Bool
     let primeFreeShipping: Bool
     let descriptionUrl: String
     let oldPrice: String

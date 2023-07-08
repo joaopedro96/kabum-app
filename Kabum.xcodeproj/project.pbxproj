@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		CF013C662A26DBDD003548E2 /* KBCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF013C652A26DBDD003548E2 /* KBCoverView.swift */; };
+		CF10BD122A3295B300E24D34 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10BD112A3295B300E24D34 /* DataExtensions.swift */; };
+		CF4D50012A2CF91A00A30536 /* KBCoverViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D50002A2CF91A00A30536 /* KBCoverViewModelProtocol.swift */; };
+		CF4D50052A2CFCCC00A30536 /* KBCoverViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D50042A2CFCCC00A30536 /* KBCoverViewState.swift */; };
+		CF4D50072A2CFCE500A30536 /* KBCoverViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D50062A2CFCE500A30536 /* KBCoverViewProtocol.swift */; };
+		CF4D50092A2D0C8800A30536 /* KBHomeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D50082A2D0C8800A30536 /* KBHomeViewState.swift */; };
+		CF4D500B2A2D0C9800A30536 /* KBHomeViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D500A2A2D0C9800A30536 /* KBHomeViewModelProtocol.swift */; };
+		CF4D500D2A2D745E00A30536 /* KBHomeHeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D500C2A2D745E00A30536 /* KBHomeHeaderSectionView.swift */; };
+		CF4D500F2A2D76D200A30536 /* KBHomeTableSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4D500E2A2D76D200A30536 /* KBHomeTableSectionView.swift */; };
 		CF7CE8C52A268A0000390C19 /* KBFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8C42A268A0000390C19 /* KBFlowManager.swift */; };
 		CF7CE8CB2A268A7700390C19 /* KBServiceRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CA2A268A7700390C19 /* KBServiceRequestProtocol.swift */; };
 		CF7CE8CE2A268AC000390C19 /* KBServiceManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CD2A268AC000390C19 /* KBServiceManagerProtocol.swift */; };
 		CF7CE8D02A268AEF00390C19 /* KBServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8CF2A268AEF00390C19 /* KBServiceManager.swift */; };
-		CF7CE8D22A268B6400390C19 /* KBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D12A268B6400390C19 /* KBRequest.swift */; };
-		CF7CE8D42A268E8000390C19 /* KBHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D32A268E8000390C19 /* KBHomeModel.swift */; };
+		CF7CE8D22A268B6400390C19 /* KBHomeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D12A268B6400390C19 /* KBHomeRequest.swift */; };
+		CF7CE8D42A268E8000390C19 /* KBHomeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */; };
 		CF7CE8D72A26B91D00390C19 /* UICollorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D62A26B91D00390C19 /* UICollorExtensions.swift */; };
 		CF7CE8D92A26B93700390C19 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */; };
 		CF7CE8DB2A26B94B00390C19 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */; };
@@ -25,27 +33,56 @@
 		CF7CE8F32A26BFBA00390C19 /* KBCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8F22A26BFBA00390C19 /* KBCategoriesViewController.swift */; };
 		CF7CE8F72A26C00000390C19 /* KBFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8F62A26C00000390C19 /* KBFavoritesViewController.swift */; };
 		CF7CE8F92A26C05200390C19 /* KBAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7CE8F82A26C05200390C19 /* KBAccountViewController.swift */; };
+		CF82BA8A2A2E0EFC000096D9 /* KBNavigationSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82BA892A2E0EFC000096D9 /* KBNavigationSearchBarView.swift */; };
+		CF82BA8C2A2E220A000096D9 /* KBNavigationCustomItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82BA8B2A2E220A000096D9 /* KBNavigationCustomItemView.swift */; };
+		CF82BA902A2E2D92000096D9 /* KBBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82BA8F2A2E2D92000096D9 /* KBBaseNavigationViewController.swift */; };
+		CF82BA932A2EC2F3000096D9 /* KBSearchableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF82BA922A2EC2F3000096D9 /* KBSearchableNavigationController.swift */; };
+		CF8303B82A2CE61B00FE3AB0 /* KabumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8303B72A2CE61B00FE3AB0 /* KabumTests.swift */; };
+		CF8303BF2A2CE87500FE3AB0 /* KBHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8303BE2A2CE87500FE3AB0 /* KBHomeViewModel.swift */; };
+		CF8303C12A2CE8ED00FE3AB0 /* KBHomeViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8303C02A2CE8ED00FE3AB0 /* KBHomeViewEntity.swift */; };
+		CF8303C62A2CF08500FE3AB0 /* KBCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8303C52A2CF08500FE3AB0 /* KBCoverViewModel.swift */; };
+		CF8303CA2A2CF3DC00FE3AB0 /* KBHomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8303C92A2CF3DC00FE3AB0 /* KBHomeViewProtocol.swift */; };
 		CF8EDCF02A267492008F6C71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EDCEF2A267492008F6C71 /* AppDelegate.swift */; };
 		CF8EDCF22A267492008F6C71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8EDCF12A267492008F6C71 /* SceneDelegate.swift */; };
 		CF8EDCF92A267492008F6C71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCF82A267492008F6C71 /* Assets.xcassets */; };
 		CF8EDCFC2A267492008F6C71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8EDCFA2A267492008F6C71 /* LaunchScreen.storyboard */; };
+		CFAA1F292A2F852E0022C8E9 /* KBBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA1F282A2F852E0022C8E9 /* KBBadgeLabel.swift */; };
+		CFAA1F2B2A2FC9E20022C8E9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAA1F2A2A2FC9E20022C8E9 /* StringExtensions.swift */; };
 		CFCDF71D2A279AF100BC7BED /* KBHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */; };
 		CFCDF7202A279D3E00BC7BED /* KBDynamicHeightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF71F2A279D3E00BC7BED /* KBDynamicHeightTableView.swift */; };
 		CFCDF7222A279DC000BC7BED /* KBHomeProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */; };
 		E85FDCC1F9A28FECEAC82623 /* Pods_Kabum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0182B4B789CA71E3101ABCBC /* Pods_Kabum.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CF8303B92A2CE61B00FE3AB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF8EDCE42A267492008F6C71 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF8EDCEB2A267492008F6C71;
+			remoteInfo = Kabum;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0182B4B789CA71E3101ABCBC /* Pods_Kabum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kabum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AD1CE96F3970F6A1A46CD7 /* Pods-Kabum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kabum.release.xcconfig"; path = "Target Support Files/Pods-Kabum/Pods-Kabum.release.xcconfig"; sourceTree = "<group>"; };
 		6EE387A728714A52183C0992 /* Pods-Kabum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kabum.debug.xcconfig"; path = "Target Support Files/Pods-Kabum/Pods-Kabum.debug.xcconfig"; sourceTree = "<group>"; };
 		CF013C652A26DBDD003548E2 /* KBCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverView.swift; sourceTree = "<group>"; };
+		CF10BD112A3295B300E24D34 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
+		CF4D50002A2CF91A00A30536 /* KBCoverViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverViewModelProtocol.swift; sourceTree = "<group>"; };
+		CF4D50042A2CFCCC00A30536 /* KBCoverViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KBCoverViewState.swift; path = ../../../../../../../../.Trash/KBCoverViewState.swift; sourceTree = "<group>"; };
+		CF4D50062A2CFCE500A30536 /* KBCoverViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KBCoverViewProtocol.swift; path = ../../../../../../../../.Trash/KBCoverViewProtocol.swift; sourceTree = "<group>"; };
+		CF4D50082A2D0C8800A30536 /* KBHomeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeViewState.swift; sourceTree = "<group>"; };
+		CF4D500A2A2D0C9800A30536 /* KBHomeViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeViewModelProtocol.swift; sourceTree = "<group>"; };
+		CF4D500C2A2D745E00A30536 /* KBHomeHeaderSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeHeaderSectionView.swift; sourceTree = "<group>"; };
+		CF4D500E2A2D76D200A30536 /* KBHomeTableSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeTableSectionView.swift; sourceTree = "<group>"; };
 		CF7CE8C42A268A0000390C19 /* KBFlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBFlowManager.swift; sourceTree = "<group>"; };
 		CF7CE8CA2A268A7700390C19 /* KBServiceRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceRequestProtocol.swift; sourceTree = "<group>"; };
 		CF7CE8CD2A268AC000390C19 /* KBServiceManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceManagerProtocol.swift; sourceTree = "<group>"; };
 		CF7CE8CF2A268AEF00390C19 /* KBServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBServiceManager.swift; sourceTree = "<group>"; };
-		CF7CE8D12A268B6400390C19 /* KBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBRequest.swift; sourceTree = "<group>"; };
-		CF7CE8D32A268E8000390C19 /* KBHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeModel.swift; sourceTree = "<group>"; };
+		CF7CE8D12A268B6400390C19 /* KBHomeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeRequest.swift; sourceTree = "<group>"; };
+		CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeResponse.swift; sourceTree = "<group>"; };
 		CF7CE8D62A26B91D00390C19 /* UICollorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollorExtensions.swift; sourceTree = "<group>"; };
 		CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -57,18 +94,37 @@
 		CF7CE8F22A26BFBA00390C19 /* KBCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCategoriesViewController.swift; sourceTree = "<group>"; };
 		CF7CE8F62A26C00000390C19 /* KBFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBFavoritesViewController.swift; sourceTree = "<group>"; };
 		CF7CE8F82A26C05200390C19 /* KBAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBAccountViewController.swift; sourceTree = "<group>"; };
+		CF82BA892A2E0EFC000096D9 /* KBNavigationSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBNavigationSearchBarView.swift; sourceTree = "<group>"; };
+		CF82BA8B2A2E220A000096D9 /* KBNavigationCustomItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBNavigationCustomItemView.swift; sourceTree = "<group>"; };
+		CF82BA8F2A2E2D92000096D9 /* KBBaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBaseNavigationViewController.swift; sourceTree = "<group>"; };
+		CF82BA922A2EC2F3000096D9 /* KBSearchableNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBSearchableNavigationController.swift; sourceTree = "<group>"; };
+		CF8303B52A2CE61B00FE3AB0 /* KabumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KabumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF8303B72A2CE61B00FE3AB0 /* KabumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabumTests.swift; sourceTree = "<group>"; };
+		CF8303BE2A2CE87500FE3AB0 /* KBHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeViewModel.swift; sourceTree = "<group>"; };
+		CF8303C02A2CE8ED00FE3AB0 /* KBHomeViewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeViewEntity.swift; sourceTree = "<group>"; };
+		CF8303C52A2CF08500FE3AB0 /* KBCoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBCoverViewModel.swift; sourceTree = "<group>"; };
+		CF8303C92A2CF3DC00FE3AB0 /* KBHomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeViewProtocol.swift; sourceTree = "<group>"; };
 		CF8EDCEC2A267492008F6C71 /* Kabum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kabum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF8EDCEF2A267492008F6C71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF8EDCF12A267492008F6C71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CF8EDCF82A267492008F6C71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF8EDCFB2A267492008F6C71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF8EDCFD2A267492008F6C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFAA1F282A2F852E0022C8E9 /* KBBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBadgeLabel.swift; sourceTree = "<group>"; };
+		CFAA1F2A2A2FC9E20022C8E9 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeView.swift; sourceTree = "<group>"; };
 		CFCDF71F2A279D3E00BC7BED /* KBDynamicHeightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBDynamicHeightTableView.swift; sourceTree = "<group>"; };
 		CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBHomeProductTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CF8303B22A2CE61B00FE3AB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF8EDCE92A267492008F6C71 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +185,7 @@
 			children = (
 				CF7CE8C72A268A3800390C19 /* Manager */,
 				CF7CE8C92A268A4700390C19 /* Requests */,
+				CF8303C42A2CEB3F00FE3AB0 /* Response */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -146,7 +203,7 @@
 		CF7CE8C92A268A4700390C19 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				CF7CE8D12A268B6400390C19 /* KBRequest.swift */,
+				CF7CE8D12A268B6400390C19 /* KBHomeRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -158,6 +215,8 @@
 				CF7CE8D82A26B93700390C19 /* UIImageExtensions.swift */,
 				CF7CE8DA2A26B94B00390C19 /* UIViewExtensions.swift */,
 				CF7CE8DC2A26B95C00390C19 /* UIStackViewExtensions.swift */,
+				CFAA1F2A2A2FC9E20022C8E9 /* StringExtensions.swift */,
+				CF10BD112A3295B300E24D34 /* DataExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -174,6 +233,8 @@
 		CF7CE8DF2A26BA0A00390C19 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CFAA1F252A2F85100022C8E9 /* Badge */,
+				CF82BA912A2EC2D4000096D9 /* SearchableNavigationBar */,
 				CFCDF71E2A279D2300BC7BED /* DynamicTableView */,
 				CF7CE8E22A26BA2B00390C19 /* TabBar */,
 			);
@@ -197,9 +258,11 @@
 			isa = PBXGroup;
 			children = (
 				CF7CE8ED2A26BEDB00390C19 /* KBHomeViewController.swift */,
+				CF8303BE2A2CE87500FE3AB0 /* KBHomeViewModel.swift */,
 				CFCDF71C2A279AF100BC7BED /* KBHomeView.swift */,
-				CF7CE8D32A268E8000390C19 /* KBHomeModel.swift */,
-				CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */,
+				CF8303C32A2CEA3A00FE3AB0 /* Entity */,
+				CF8303C82A2CF3AF00FE3AB0 /* Protocols */,
+				CF8303C22A2CE9A000FE3AB0 /* ViewSections */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -216,7 +279,9 @@
 			isa = PBXGroup;
 			children = (
 				CF7CE8EB2A26BDAA00390C19 /* KBCoverViewController.swift */,
+				CF8303C52A2CF08500FE3AB0 /* KBCoverViewModel.swift */,
 				CF013C652A26DBDD003548E2 /* KBCoverView.swift */,
+				CF8303CB2A2CF3FD00FE3AB0 /* Protocols */,
 			);
 			path = Cover;
 			sourceTree = "<group>";
@@ -253,10 +318,76 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		CF82BA912A2EC2D4000096D9 /* SearchableNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				CF82BA922A2EC2F3000096D9 /* KBSearchableNavigationController.swift */,
+				CF82BA8F2A2E2D92000096D9 /* KBBaseNavigationViewController.swift */,
+				CF82BA892A2E0EFC000096D9 /* KBNavigationSearchBarView.swift */,
+				CF82BA8B2A2E220A000096D9 /* KBNavigationCustomItemView.swift */,
+			);
+			path = SearchableNavigationBar;
+			sourceTree = "<group>";
+		};
+		CF8303B62A2CE61B00FE3AB0 /* KabumTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF8303B72A2CE61B00FE3AB0 /* KabumTests.swift */,
+			);
+			path = KabumTests;
+			sourceTree = "<group>";
+		};
+		CF8303C22A2CE9A000FE3AB0 /* ViewSections */ = {
+			isa = PBXGroup;
+			children = (
+				CF4D500C2A2D745E00A30536 /* KBHomeHeaderSectionView.swift */,
+				CF4D500E2A2D76D200A30536 /* KBHomeTableSectionView.swift */,
+				CFCDF7212A279DC000BC7BED /* KBHomeProductTableViewCell.swift */,
+			);
+			path = ViewSections;
+			sourceTree = "<group>";
+		};
+		CF8303C32A2CEA3A00FE3AB0 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CF8303C02A2CE8ED00FE3AB0 /* KBHomeViewEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		CF8303C42A2CEB3F00FE3AB0 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				CF7CE8D32A268E8000390C19 /* KBHomeResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		CF8303C82A2CF3AF00FE3AB0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CF4D500A2A2D0C9800A30536 /* KBHomeViewModelProtocol.swift */,
+				CF8303C92A2CF3DC00FE3AB0 /* KBHomeViewProtocol.swift */,
+				CF4D50082A2D0C8800A30536 /* KBHomeViewState.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CF8303CB2A2CF3FD00FE3AB0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CF4D50002A2CF91A00A30536 /* KBCoverViewModelProtocol.swift */,
+				CF4D50062A2CFCE500A30536 /* KBCoverViewProtocol.swift */,
+				CF4D50042A2CFCCC00A30536 /* KBCoverViewState.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		CF8EDCE32A267492008F6C71 = {
 			isa = PBXGroup;
 			children = (
 				CF8EDCEE2A267492008F6C71 /* Kabum */,
+				CF8303B62A2CE61B00FE3AB0 /* KabumTests */,
 				CF8EDCED2A267492008F6C71 /* Products */,
 				292649F9B72A6A607DC99161 /* Pods */,
 				85DBD05477B52DBA2833189F /* Frameworks */,
@@ -267,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				CF8EDCEC2A267492008F6C71 /* Kabum.app */,
+				CF8303B52A2CE61B00FE3AB0 /* KabumTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -284,6 +416,14 @@
 			path = Kabum;
 			sourceTree = "<group>";
 		};
+		CFAA1F252A2F85100022C8E9 /* Badge */ = {
+			isa = PBXGroup;
+			children = (
+				CFAA1F282A2F852E0022C8E9 /* KBBadgeLabel.swift */,
+			);
+			path = Badge;
+			sourceTree = "<group>";
+		};
 		CFCDF71E2A279D2300BC7BED /* DynamicTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +435,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CF8303B42A2CE61B00FE3AB0 /* KabumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF8303BD2A2CE61B00FE3AB0 /* Build configuration list for PBXNativeTarget "KabumTests" */;
+			buildPhases = (
+				CF8303B12A2CE61B00FE3AB0 /* Sources */,
+				CF8303B22A2CE61B00FE3AB0 /* Frameworks */,
+				CF8303B32A2CE61B00FE3AB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF8303BA2A2CE61B00FE3AB0 /* PBXTargetDependency */,
+			);
+			name = KabumTests;
+			productName = KabumTests;
+			productReference = CF8303B52A2CE61B00FE3AB0 /* KabumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CF8EDCEB2A267492008F6C71 /* Kabum */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF8EDD002A267492008F6C71 /* Build configuration list for PBXNativeTarget "Kabum" */;
@@ -324,6 +482,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					CF8303B42A2CE61B00FE3AB0 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = CF8EDCEB2A267492008F6C71;
+					};
 					CF8EDCEB2A267492008F6C71 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -343,11 +505,19 @@
 			projectRoot = "";
 			targets = (
 				CF8EDCEB2A267492008F6C71 /* Kabum */,
+				CF8303B42A2CE61B00FE3AB0 /* KabumTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CF8303B32A2CE61B00FE3AB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF8EDCEA2A267492008F6C71 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,21 +572,40 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CF8303B12A2CE61B00FE3AB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF8303B82A2CE61B00FE3AB0 /* KabumTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF8EDCE82A267492008F6C71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF7CE8D42A268E8000390C19 /* KBHomeModel.swift in Sources */,
+				CF7CE8D42A268E8000390C19 /* KBHomeResponse.swift in Sources */,
 				CF7CE8EC2A26BDAA00390C19 /* KBCoverViewController.swift in Sources */,
 				CFCDF7222A279DC000BC7BED /* KBHomeProductTableViewCell.swift in Sources */,
+				CF4D500F2A2D76D200A30536 /* KBHomeTableSectionView.swift in Sources */,
+				CF82BA8C2A2E220A000096D9 /* KBNavigationCustomItemView.swift in Sources */,
 				CF7CE8D72A26B91D00390C19 /* UICollorExtensions.swift in Sources */,
 				CF7CE8EE2A26BEDB00390C19 /* KBHomeViewController.swift in Sources */,
 				CF7CE8DB2A26B94B00390C19 /* UIViewExtensions.swift in Sources */,
 				CF7CE8F72A26C00000390C19 /* KBFavoritesViewController.swift in Sources */,
 				CF7CE8D92A26B93700390C19 /* UIImageExtensions.swift in Sources */,
 				CF7CE8C52A268A0000390C19 /* KBFlowManager.swift in Sources */,
+				CF8303C12A2CE8ED00FE3AB0 /* KBHomeViewEntity.swift in Sources */,
+				CFAA1F2B2A2FC9E20022C8E9 /* StringExtensions.swift in Sources */,
+				CF4D50092A2D0C8800A30536 /* KBHomeViewState.swift in Sources */,
+				CF4D50012A2CF91A00A30536 /* KBCoverViewModelProtocol.swift in Sources */,
+				CF4D500B2A2D0C9800A30536 /* KBHomeViewModelProtocol.swift in Sources */,
+				CF4D500D2A2D745E00A30536 /* KBHomeHeaderSectionView.swift in Sources */,
 				CF7CE8D02A268AEF00390C19 /* KBServiceManager.swift in Sources */,
-				CF7CE8D22A268B6400390C19 /* KBRequest.swift in Sources */,
+				CF8303BF2A2CE87500FE3AB0 /* KBHomeViewModel.swift in Sources */,
+				CF4D50072A2CFCE500A30536 /* KBCoverViewProtocol.swift in Sources */,
+				CF82BA902A2E2D92000096D9 /* KBBaseNavigationViewController.swift in Sources */,
+				CF7CE8D22A268B6400390C19 /* KBHomeRequest.swift in Sources */,
 				CF7CE8F02A26BF1300390C19 /* KBProductDetailsViewController.swift in Sources */,
 				CFCDF7202A279D3E00BC7BED /* KBDynamicHeightTableView.swift in Sources */,
 				CF7CE8E72A26BB2000390C19 /* KBTabBarController.swift in Sources */,
@@ -425,14 +614,29 @@
 				CF7CE8CB2A268A7700390C19 /* KBServiceRequestProtocol.swift in Sources */,
 				CF7CE8F92A26C05200390C19 /* KBAccountViewController.swift in Sources */,
 				CF7CE8DD2A26B95C00390C19 /* UIStackViewExtensions.swift in Sources */,
+				CF8303C62A2CF08500FE3AB0 /* KBCoverViewModel.swift in Sources */,
 				CF013C662A26DBDD003548E2 /* KBCoverView.swift in Sources */,
 				CF8EDCF22A267492008F6C71 /* SceneDelegate.swift in Sources */,
 				CF7CE8F32A26BFBA00390C19 /* KBCategoriesViewController.swift in Sources */,
+				CFAA1F292A2F852E0022C8E9 /* KBBadgeLabel.swift in Sources */,
+				CF8303CA2A2CF3DC00FE3AB0 /* KBHomeViewProtocol.swift in Sources */,
+				CF82BA932A2EC2F3000096D9 /* KBSearchableNavigationController.swift in Sources */,
+				CF82BA8A2A2E0EFC000096D9 /* KBNavigationSearchBarView.swift in Sources */,
 				CF7CE8CE2A268AC000390C19 /* KBServiceManagerProtocol.swift in Sources */,
+				CF4D50052A2CFCCC00A30536 /* KBCoverViewState.swift in Sources */,
+				CF10BD122A3295B300E24D34 /* DataExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF8303BA2A2CE61B00FE3AB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF8EDCEB2A267492008F6C71 /* Kabum */;
+			targetProxy = CF8303B92A2CE61B00FE3AB0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CF8EDCFA2A267492008F6C71 /* LaunchScreen.storyboard */ = {
@@ -446,6 +650,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CF8303BB2A2CE61B00FE3AB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J49GH65GF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = joaopedro96.KabumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kabum.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kabum";
+			};
+			name = Debug;
+		};
+		CF8303BC2A2CE61B00FE3AB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J49GH65GF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = joaopedro96.KabumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kabum.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kabum";
+			};
+			name = Release;
+		};
 		CF8EDCFE2A267492008F6C71 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -627,6 +867,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CF8303BD2A2CE61B00FE3AB0 /* Build configuration list for PBXNativeTarget "KabumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF8303BB2A2CE61B00FE3AB0 /* Debug */,
+				CF8303BC2A2CE61B00FE3AB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CF8EDCE72A267492008F6C71 /* Build configuration list for PBXProject "Kabum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

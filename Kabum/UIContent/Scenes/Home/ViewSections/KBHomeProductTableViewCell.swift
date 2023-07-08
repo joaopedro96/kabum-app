@@ -8,11 +8,19 @@
 import Kingfisher
 import UIKit
 
+protocol KBHomeProductTableViewCellDelegate: AnyObject {
+    func didTapBuyButton()
+    func didTapFavoriteButton(with state: Bool, and index: Int)
+    func didTapShoppingCartButton(with state: Bool, and index: Int)
+}
+
 final class KBHomeProductTableViewCell: UITableViewCell {
     
     // MARK: - PROPERTIES
     
     static let identifier = "KBHomeProductTableViewCell"
+    weak var delegate: KBHomeProductTableViewCellDelegate?
+    var cellIndex: Int = 0
     
     // MARK: - INITIALIZER
     
@@ -143,7 +151,6 @@ final class KBHomeProductTableViewCell: UITableViewCell {
         let setupComponent = UIButton(frame: .zero)
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
         setupComponent.layer.cornerRadius = 4
-        setupComponent.setTitle("Comprar", for: .normal)
         setupComponent.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
         setupComponent.backgroundColor = .orange500
         setupComponent.addTarget(self, action: #selector(didTapBuyButton), for: .touchUpInside)
@@ -174,32 +181,43 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     
     // MARK: - PUBLIC METHODS
     
-    func updateCell(with cellData: KBProductObject) {
-        updateProductImage(with: cellData.image)
-        manufacturerLabel.text = cellData.manufacturer.name.uppercased()
-        nameLabel.text = cellData.name
-        discountPriceLabel.text = cellData.formattedDiscountPrice
-        installmentPriceLabel.text = "\(cellData.formattedPrice) em até 10x"
-        setTags(with: cellData)
+    func updateCell(with cellEntity: KBHomeTableViewCellEntity) {
+        updateProductImage(with: cellEntity.image)
+        manufacturerLabel.text = cellEntity.manufacturerName.uppercased()
+        nameLabel.text = cellEntity.name
+        discountPriceLabel.text = cellEntity.discountPrice.toCurrency()
+        installmentPriceLabel.text = cellEntity.formattedPrice
+        buyButton.setTitle(cellEntity.buyButtonTitle, for: .normal)
+        setTags(with: cellEntity)
     }
     
     // MARK: - PRIVATE METHODS
     
-    private func setTags(with cellData: KBProductObject) {
-        checkPrimeTag(for: cellData.discountPrice, and: cellData.primeDiscountPrice)
-        checkNinjaTag(for: cellData.offer)
-        checkBoxTag(for: cellData.isOpenBox)
+    private func setTags(with cellEntity: KBHomeTableViewCellEntity) {
+        checkPrimeTag(for: cellEntity.discountPrice, and: cellEntity.primeDiscountPrice)
+        checkNinjaTag(for: cellEntity.isOffer)
+        checkShippingTag(for: cellEntity.isFreeShipping)
+        checkBoxTag(for: cellEntity.isOpenBox)
     }
     
     private func checkPrimeTag(for discountPrice: String, and primeDiscountPrice: String) {
-        if primeDiscountPrice < discountPrice && primeDiscountPrice != "0.00" {
+        guard let primeDiscountPrice = Double(primeDiscountPrice),
+              let discountPrice = Double(discountPrice) else { return }
+        
+        if (primeDiscountPrice < discountPrice) && (primeDiscountPrice != 0.00) {
             makeTag(with: .primeIcon)
         }
     }
     
-    private func checkNinjaTag(for offerObject: KBOfferObject?) {
-        if offerObject?.event != nil {
+    private func checkNinjaTag(for isOffer: Bool) {
+        if isOffer {
             makeTag(with: .ninjaIcon)
+        }
+    }
+    
+    private func checkShippingTag(for isFreeShipping: Bool) {
+        if isFreeShipping {
+            makeTag(with: .shippingIcon)
         }
     }
     
@@ -225,17 +243,17 @@ final class KBHomeProductTableViewCell: UITableViewCell {
     }
     
     @objc private func didTapBuyButton() {
-        print("buy button tapped")
+        delegate?.didTapBuyButton()
     }
     
     @objc private func didTapFavoriteButton() {
         favoriteButton.isSelected.toggle()
-        print("favorite button tapped")
+        delegate?.didTapFavoriteButton(with: favoriteButton.isSelected, and: cellIndex)
     }
 
     @objc private func didTapCartButton() {
         shoppingCartButton.isSelected.toggle()
-        print("shopping cart button tapped")
+        delegate?.didTapShoppingCartButton(with: shoppingCartButton.isSelected, and: cellIndex)
     }
     
     // MARK: - SETUP VIEW
