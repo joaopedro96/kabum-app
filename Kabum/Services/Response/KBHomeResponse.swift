@@ -48,7 +48,6 @@ struct KBProductObject: Codable {
     let menu: String
     let inStock: Bool
     let sellerName: String
-    let offerId: String
     let sellerId: Int
     let discountPct: String
     
@@ -77,7 +76,6 @@ struct KBProductObject: Codable {
         case inStock = "disponibilidade"
         case offer = "oferta"
         case sellerName = "vendedor_nome"
-        case offerId = "offer_id"
         case sellerId = "id_seller"
         case discountPct = "porcentagem_desconto"
     }

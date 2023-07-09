@@ -42,7 +42,7 @@ extension UIColor{
         let hexString:String = hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines) as String
         let scanner = Scanner(string: hexString)
         if (hexString.hasPrefix("#")) {
-            let block = scanner.string[scanner.currentIndex...]
+            let _ = scanner.string[scanner.currentIndex...]
             scanner.currentIndex = scanner.string.index(after: scanner.currentIndex)
         }
         
