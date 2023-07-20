@@ -49,34 +49,34 @@
                     |- Scenes
                         |- Home
                             |- Entity
-                                |- AccountHomeViewEntity
+                                |- ACDeleteAccountHomeViewEntity
                             |- Protocols
-                                |- AccountHomeViewControllerProtocol
-                                |- AccountHomeViewProtocol
-                                |- AccountHomeViewModelProtocol
-                                |- AccountHomeViewState
+                                |- ACDeleteAccountHomeViewControllerProtocol
+                                |- ACDeleteAccountHomeViewProtocol
+                                |- ACDeleteAccountHomeViewModelProtocol
+                                |- ACDeleteAccountHomeViewState
                             |- ViewSections
-                                |- AccountHomeHeaderSectionView
-                                |- AccountHomeFooterSectionView
-                            |- AccountHomeViewController
-                            |- AccountHomeViewModel
-                            |- AccountHomeModel
-                            |- AccountHomeView
+                                |- ACDeleteAccountHomeHeaderSectionView
+                                |- ACDeleteAccountHomeFooterSectionView
+                            |- ACDeleteAccountHomeViewController
+                            |- ACDeleteAccountHomeViewModel
+                            |- ACDeleteAccountHomeModel
+                            |- ACDeleteAccountHomeView
                         |- Receipt
                             |- Entity
-                                |- AccountReceiptViewEntity
+                                |- ACDeleteAccountReceiptViewEntity
                             |- Protocols
-                                |- AccountReceiptViewControllerProtocol
-                                |- AccountReceiptViewProtocol
-                                |- AccountReceiptViewModelProtocol
-                                |- AccountReceiptViewState
+                                |- ACDeleteAccountReceiptViewControllerProtocol
+                                |- ACDeleteAccountReceiptViewProtocol
+                                |- ACDeleteAccountReceiptViewModelProtocol
+                                |- ACDeleteAccountReceiptViewState
                             |- ViewSections
-                                |- AccountReceiptHeaderSectionView
-                                |- AccountReceiptFooterSectionView
-                            |- AccountReceiptViewController
-                            |- AccountReceiptViewModel
-                            |- AccountReceiptModel
-                            |- AccountReceiptView
+                                |- ACDeleteAccountReceiptHeaderSectionView
+                                |- ACDeleteAccountReceiptFooterSectionView
+                            |- ACDeleteAccountReceiptViewController
+                            |- ACDeleteAccountReceiptViewModel
+                            |- ACDeleteAccountReceiptModel
+                            |- ACDeleteAccountReceiptView
                 |- Login
                     |- Scenes
                         |- Home
