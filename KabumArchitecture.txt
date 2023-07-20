@@ -1,0 +1,94 @@
+|- Core
+    |- Project
+        |- config
+        |- Derived
+        |- Core
+            |- Resources
+                |- LaunchScreen
+                |- Assets
+            |- Sources
+                |- Inicio do App
+                |- AppDelegate
+                |- SceneDelegate*
+                |- Flow
+                |- TabControllers
+            |- Info.plist
+        |- CoreTests
+            |- Resources
+            |- Sources
+            |- Info.plist
+    |- Frameworks
+
+|- Network
+	|- Project
+		|- config
+		|- Sources
+		|- info.plist
+	|-Frameworks
+
+|- KabumDS
+    |- Project
+        |- config
+        |- Sources
+            |- FontSystem
+            |- IconSystem
+            |- ColorSystem
+            |- Components
+        |- Resources
+            |- Assets
+            |- FontTypes
+        |- Info.plist
+    |- Frameworks
+
+|- Account
+    |- Project
+        |- config
+        |- Account
+            |- Sources
+                |- DeleteAccount
+                    |- Scenes
+                        |- Home
+                            |- Entity
+                                |- AccountHomeViewEntity
+                            |- Protocols
+                                |- AccountHomeViewControllerProtocol
+                                |- AccountHomeViewProtocol
+                                |- AccountHomeViewModelProtocol
+                                |- AccountHomeViewState
+                            |- ViewSections
+                                |- AccountHomeHeaderSectionView
+                                |- AccountHomeFooterSectionView
+                            |- AccountHomeViewController
+                            |- AccountHomeViewModel
+                            |- AccountHomeModel
+                            |- AccountHomeView
+                        |- Receipt
+                            |- Entity
+                                |- AccountReceiptViewEntity
+                            |- Protocols
+                                |- AccountReceiptViewControllerProtocol
+                                |- AccountReceiptViewProtocol
+                                |- AccountReceiptViewModelProtocol
+                                |- AccountReceiptViewState
+                            |- ViewSections
+                                |- AccountReceiptHeaderSectionView
+                                |- AccountReceiptFooterSectionView
+                            |- AccountReceiptViewController
+                            |- AccountReceiptViewModel
+                            |- AccountReceiptModel
+                            |- AccountReceiptView
+                |- Login
+                    |- Scenes
+                        |- Home
+                        |- Menu
+                |- Address
+                    |- Scenes
+                        |- Home
+                        |- UpdateAdress
+            |- Resources
+		|- AccountLocalizables
+            |- info.plist
+        |- AccountTests
+            |- Sources
+            |- Info.plist
+    |- Frameworks
