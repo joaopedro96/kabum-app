@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-final class KBServiceManager: KBServiceManagerProtocol {
+public final class KBServiceManager: KBServiceManagerProtocol {
     
     // MARK: - PUBLIC METHODS
     

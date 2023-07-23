@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class KBFlowManager: UINavigationController {
+public class KBFlowManager: UINavigationController {
     
     // MARK: - PROPERTIES
     
@@ -16,7 +16,7 @@ final class KBFlowManager: UINavigationController {
     
     // MARK: - INITIALIZERS
     
-    init() {
+    public init() {
         let viewModel = KBCoverViewModel(service: serviceManager)
         let rootVC = KBCoverViewController(viewModel: viewModel)
         super.init(rootViewController: rootVC)

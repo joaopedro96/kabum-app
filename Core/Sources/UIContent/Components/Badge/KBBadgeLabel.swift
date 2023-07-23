@@ -10,7 +10,7 @@ import UIKit
 final class KBBadgeLabel: UILabel {
     
     // MARK: - PROPERTIES
-    
+    let wwd = "f"
     private let padding: CGFloat = 4
     private let valueText: String
     
