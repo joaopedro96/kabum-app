@@ -48,13 +48,18 @@ let projectSettings: Settings = .settings(
 
 // MARK: - LOCAL PACKAGES
 
-let corePackage: Package = .package(path: "Core")
+//let corePackage: Package = .package(path: "Core")
 
-let localPackages: [Package] = [
-    corePackage
+let externalPackage: [Package] = [
+    .package(path: "ExternalPackages")
 ]
 
-let packages: [Package] = localPackages
+let localPackages: [Package] = [
+    .package(path: "Core"),
+    .package(path: "Network")
+]
+
+let packages: [Package] = localPackages + externalPackage
 
 // MARK: - PACKAGE DEPENDENCIES
 

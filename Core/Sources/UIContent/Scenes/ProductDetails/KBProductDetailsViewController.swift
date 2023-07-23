@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 ///View implemented only to show product detail navigation flow
 final class KBProductDetailsViewController: UIViewController {

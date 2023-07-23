@@ -10,9 +10,11 @@ import Alamofire
 
 public final class KBServiceManager: KBServiceManagerProtocol {
     
+    public init() { }
+    
     // MARK: - PUBLIC METHODS
     
-    func execute<T: Decodable>(request: KBServiceRequestProtocol,
+    public func execute<T: Decodable>(request: KBServiceRequestProtocol,
                                completion: @escaping (Result<T, Error>) -> Void) {
         AF.request(request.url,
                    method: request.method,
@@ -38,7 +40,7 @@ public final class KBServiceManager: KBServiceManagerProtocol {
         }
     }
     
-    func getStatusCode(request: KBServiceRequestProtocol, completion: @escaping ((Int?) -> Void)) {
+    public func getStatusCode(request: KBServiceRequestProtocol, completion: @escaping ((Int?) -> Void)) {
         AF.request(request.url,
                    method: request.method,
                    parameters: request.parameters,

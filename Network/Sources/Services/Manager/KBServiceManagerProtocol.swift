@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol KBServiceManagerProtocol {
+public protocol KBServiceManagerProtocol {
     func execute<T: Decodable>(request: KBServiceRequestProtocol,
                                completion: @escaping (Result<T, Error>) -> Void)
     func getStatusCode(request: KBServiceRequestProtocol, completion: @escaping ((Int?) -> Void))
@@ -16,7 +16,7 @@ protocol KBServiceManagerProtocol {
     func logParseError(for error: Error)
 }
 
-extension KBServiceManagerProtocol {
+public extension KBServiceManagerProtocol {
     
     func logRequest(with response: AFDataResponse<Data?>, data: Data? = nil, error: Error? = nil) {
         guard let requestResponse = response.response,

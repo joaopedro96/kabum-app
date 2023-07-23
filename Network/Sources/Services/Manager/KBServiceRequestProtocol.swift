@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-protocol KBServiceRequestProtocol {
+public protocol KBServiceRequestProtocol {
     var baseURL: String { get }
     var url: String { get }
     var path: String { get }
@@ -17,7 +17,7 @@ protocol KBServiceRequestProtocol {
     var headers: HTTPHeaders? { get }
 }
 
-extension KBServiceRequestProtocol {
+public extension KBServiceRequestProtocol {
     var baseURL: String {
         return "https://servicespub.prod.api.aws.grupokabum.com.br"
     }
