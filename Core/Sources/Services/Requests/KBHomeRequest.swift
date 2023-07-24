@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import Network
 
 enum KBHomeRequest: KBServiceRequestProtocol {
     
