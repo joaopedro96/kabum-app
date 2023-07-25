@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Home
 
 protocol KBCoverViewDelegate: AnyObject {
     func goToHomePage(with response: KBHomeResponse)

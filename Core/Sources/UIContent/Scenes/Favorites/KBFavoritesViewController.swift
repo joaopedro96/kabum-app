@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DesignSystem //olhar aqui
 
 ///View implemented only to show TabBar navigation
 final class KBFavoritesViewController: KBBaseNavigationViewController {

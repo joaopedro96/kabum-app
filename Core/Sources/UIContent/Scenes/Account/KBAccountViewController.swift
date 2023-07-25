@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DesignSystem
 
 ///View implemented only to show TabBar navigation
 final class KBAccountViewController: KBBaseNavigationViewController {

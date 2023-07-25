@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Home
 
 protocol KBCoverViewControllerDelegate: AnyObject {
     func goToHomePage(with response: KBHomeResponse)

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import Home
 
 protocol KBCoverViewModelProtocol: AnyObject {
     var viewState: BehaviorSubject<KBCoverViewState> { get }

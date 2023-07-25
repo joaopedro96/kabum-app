@@ -26,7 +26,9 @@ let externalPackage: [Package] = [
 
 let localPackages: [Package] = [
     .package(path: "Core"),
-    .package(path: "Network")
+    .package(path: "Network"),
+    .package(path: "DesignSystem"),
+    .package(path: "Home")
 ]
 
 let packages: [Package] = localPackages + externalPackage

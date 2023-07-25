@@ -7,6 +7,8 @@
 
 import UIKit
 import Network
+import Home
+import DesignSystem
 
 public class KBFlowManager: UINavigationController {
     
@@ -41,19 +43,19 @@ public class KBFlowManager: UINavigationController {
         
         tabBar.addTab(tabRootController: homeVC,
                       title: "Início",
-                      image: .homeIcon)
+                      image: UIImage.homeIcon)
         
         tabBar.addTab(tabRootController: categoriesVC,
                       title: "Categorias",
-                      image: .categorieIcon)
+                      image: UIImage.categorieIcon)
         
         tabBar.addTab(tabRootController: favoritesVC,
                       title: "Favoritos",
-                      image: .heartIcon)
+                      image: UIImage.heartIcon)
         
         tabBar.addTab(tabRootController: accountVC,
                       title: "Minha Conta",
-                      image: .accountIcon)
+                      image: UIImage.accountIcon)
         
         tabBarNavControllers.append(contentsOf: tabBar.navigationControllers)
         
@@ -112,22 +114,22 @@ public class KBFlowManager: UINavigationController {
 // MARK: - EXTENSIONS
 
 extension KBFlowManager: KBBaseNavigationViewControllerDelegate {
-    func didTapNavigationCartItem() {
+    public func didTapNavigationCartItem() {
         presentShoppingCartPage()
     }
     
-    func didTapNavigationSearchBar(from tabIndex: Int) {
+    public func didTapNavigationSearchBar(from tabIndex: Int) {
         goToSearchPage(from: tabIndex)
     }
     
-    func appendProductToCartList(for productCode: Int) {
+    public func appendProductToCartList(for productCode: Int) {
         tabBarNavControllers.forEach { navigationController in
             let navController = navigationController as? KBSearchableNavigationController
             navController?.rootViewController.shoppingCartList.append(productCode)
         }
     }
     
-    func removeProductFromCartList(for productCode: Int) {
+    public func removeProductFromCartList(for productCode: Int) {
         tabBarNavControllers.forEach { navigationController in
             let navController = navigationController as? KBSearchableNavigationController
             navController?.rootViewController.shoppingCartList.removeAll(where: { $0 == productCode } )
@@ -149,7 +151,7 @@ extension KBFlowManager: KBCoverViewControllerDelegate {
 extension KBFlowManager: KBHomeViewControllerDelegate {
     
     ///Demonstration about how 'tabBarNavControllers' should be called
-    func goToProductDetailsPage(from tabIndex: Int, with url: String) {
+    public func goToProductDetailsPage(from tabIndex: Int, with url: String) {
         let detailVC = makeProductsDetailViewController(with: url)
         tabBarNavControllers[tabIndex].pushViewController(detailVC, animated: true)
     }
