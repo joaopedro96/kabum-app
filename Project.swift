@@ -28,7 +28,10 @@ let localPackages: [Package] = [
     .package(path: "Core"),
     .package(path: "Network"),
     .package(path: "DesignSystem"),
-    .package(path: "Home")
+    .package(path: "Home"),
+    .package(path: "Departments"),
+    .package(path: "Favorites"),
+    .package(path: "Account")
 ]
 
 let packages: [Package] = localPackages + externalPackage

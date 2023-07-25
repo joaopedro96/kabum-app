@@ -9,6 +9,9 @@ import UIKit
 import Network
 import Home
 import DesignSystem
+import Departments
+import Favorites
+import Account
 
 public class KBFlowManager: UINavigationController {
     

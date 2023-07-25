@@ -16,7 +16,7 @@ public protocol KBHomeViewDelegate: AnyObject {
 }
 
 final public class KBHomeView: UIView {
-    
+    let a = ""
     // MARK: - PROPERTIES
     
     private var currentProductPage: Int? = 1

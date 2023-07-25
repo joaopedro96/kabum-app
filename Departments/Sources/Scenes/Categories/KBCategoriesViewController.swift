@@ -9,8 +9,8 @@ import UIKit
 import DesignSystem
 
 ///View implemented only to show TabBar navigation
-final class KBCategoriesViewController: KBBaseNavigationViewController {
-    override func viewDidLoad() {
+final public class KBCategoriesViewController: KBBaseNavigationViewController {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
     }

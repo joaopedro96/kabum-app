@@ -9,8 +9,8 @@ import UIKit
 import DesignSystem //olhar aqui
 
 ///View implemented only to show TabBar navigation
-final class KBFavoritesViewController: KBBaseNavigationViewController {
-    override func viewDidLoad() {
+final public class KBFavoritesViewController: KBBaseNavigationViewController {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
     }

@@ -9,8 +9,8 @@ import UIKit
 import DesignSystem
 
 ///View implemented only to show TabBar navigation
-final class KBAccountViewController: KBBaseNavigationViewController {
-    override func viewDidLoad() {
+final public class KBAccountViewController: KBBaseNavigationViewController {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray
         navigationController?.navigationBar.isHidden = true
