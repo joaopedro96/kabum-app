@@ -27,6 +27,7 @@ final class KBHomeHeaderSectionView: UIView {
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
         setupComponent.font = .systemFont(ofSize: 12, weight: .regular)
         setupComponent.textColor = .blue200
+        setupComponent.text = "Produtos"
         return setupComponent
     }()
     
@@ -35,6 +36,7 @@ final class KBHomeHeaderSectionView: UIView {
         setupComponent.translatesAutoresizingMaskIntoConstraints = false
         setupComponent.font = .systemFont(ofSize: 24, weight: .bold)
         setupComponent.textColor = .gray500
+        setupComponent.text = "Em destaque"
         return setupComponent
     }()
     
