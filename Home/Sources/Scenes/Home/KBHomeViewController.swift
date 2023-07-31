@@ -26,7 +26,7 @@ final public class KBHomeViewController: KBBaseNavigationViewController {
     // MARK: - INITIALIZERS
     
     public init(viewModel: KBHomeViewModelProtocol,
-         contentView: KBHomeViewProtocol = KBHomeView()) {
+                contentView: KBHomeViewProtocol = KBHomeView()) {
         self.viewModel = viewModel
         self.contentView = contentView
         super.init(nibName: nil, bundle: nil)
@@ -71,7 +71,7 @@ extension KBHomeViewController: KBHomeViewDelegate {
     }
     
     public func didTapProduct(with index: Int) {
-        let url = viewModel.getProductDescriptionUrl(for: index)
+        guard let url = viewModel.getProductDescriptionUrl(for: index) else { return }
         delegate?.goToProductDetailsPage(from: tabBarIndex, with: url)
     }
     
@@ -80,7 +80,7 @@ extension KBHomeViewController: KBHomeViewDelegate {
     }
     
     public func didTapShoppingCartButton(with state: Bool, and index: Int) {
-        let productCode = viewModel.getProductCode(for: index)
+        guard let productCode = viewModel.getProductCode(for: index) else { return }
         state ? addProductToCart(with: productCode) : removeProductFromCart(with: productCode)
     }
 }

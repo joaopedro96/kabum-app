@@ -14,21 +14,19 @@ final public class KBHomeViewModel: KBHomeViewModelProtocol {
     // MARK: - PROPERTIES
     
     private let service: KBServiceManagerProtocol
-    private var homeResponse: KBHomeResponse
+    private var homeResponse: KBHomeResponse?
     public let viewState = BehaviorSubject<KBHomeViewState>(value: .isEmpty)
     
     // MARK: - INITIALIZER
     
-    public init(service: KBServiceManagerProtocol, homeResponse: KBHomeResponse) {
+    public init(service: KBServiceManagerProtocol) {
         self.service = service
-        self.homeResponse = homeResponse
     }
     
     // MARK: - PUBLIC METHODS
     
     public func initState() {
-        let entity = makeEntity(with: homeResponse)
-        viewState.onNext(.hasData(entity))
+        getProductData(for: 1)
     }
     
     public func getProductData(for page: Int) {
@@ -36,13 +34,13 @@ final public class KBHomeViewModel: KBHomeViewModelProtocol {
         fetchProducts(for: page)
     }
     
-    public func getProductDescriptionUrl(for index: Int) -> String {
-        let descriptionUrl = homeResponse.products[index].descriptionUrl
+    public func getProductDescriptionUrl(for index: Int) -> String? {
+        let descriptionUrl = homeResponse?.products[index].descriptionUrl
         return descriptionUrl
     }
     
-    public func getProductCode(for index: Int) -> Int {
-        let productCode = homeResponse.products[index].code
+    public func getProductCode(for index: Int) -> Int? {
+        let productCode = homeResponse?.products[index].code
         return productCode
     }
     
@@ -66,7 +64,11 @@ final public class KBHomeViewModel: KBHomeViewModelProtocol {
     // MARK: - PRIVATE METHODS
     
     private func updateResponse(with newProducts: KBHomeResponse) {
-        homeResponse.products.append(contentsOf: newProducts.products)
+        guard let _ = homeResponse else {
+            homeResponse = newProducts
+            return
+        }
+        self.homeResponse?.products.append(contentsOf: newProducts.products)
     }
     
     private func makeEntity(with response: KBHomeResponse) -> KBHomeViewEntity {

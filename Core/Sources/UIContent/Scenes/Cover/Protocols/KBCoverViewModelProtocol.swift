@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import RxSwift
-import Home
 
 protocol KBCoverViewModelProtocol: AnyObject {
     var viewState: BehaviorSubject<KBCoverViewState> { get }
@@ -26,7 +25,6 @@ extension KBCoverViewProtocol where Self: UIView {
 }
 
 enum KBCoverViewState {
-    case hasData(KBHomeResponse)
     case hasError(Error)
     case isEmpty
     case isLoading

@@ -4,22 +4,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "Core",
+    name: "Engine",
     platforms: [.iOS(.v16)],
     products: [
         .library(
-            name: "Core",
-            targets: ["Core"]),
+            name: "Engine",
+            targets: ["Engine"]),
     ],
     dependencies: [
-        .package(name: "Engine", path: "../Engine"),
-        .package(name: "Network", path: "../Network"),
+        .package(name: "ExternalPackages", path: "../../ExternalPackages"),
+        .package(name: "Network", path: "../../Network"),
+        .package(name: "Account", path: "../../Account")
     ],
     targets: [
-        .target(name: "Core",
+        .target(name: "Engine",
                 dependencies: [
-                    .byName(name: "Engine"),
+                    .byName(name: "ExternalPackages"),
                     .byName(name: "Network"),
+                    .byName(name: "Account")
                 ],
                 path: "Sources")
     ]

@@ -7,10 +7,9 @@
 
 import UIKit
 import RxSwift
-import Home
 
 protocol KBCoverViewControllerDelegate: AnyObject {
-    func goToHomePage(with response: KBHomeResponse)
+    func goToHomePage()
 }
 
 final class KBCoverViewController: UIViewController {
@@ -64,7 +63,7 @@ final class KBCoverViewController: UIViewController {
 // MARK: - EXTENSIONS
 
 extension KBCoverViewController: KBCoverViewDelegate {
-    func goToHomePage(with response: KBHomeResponse) {
-        delegate?.goToHomePage(with: response)
+    func goToHomePage() {
+        delegate?.goToHomePage()
     }
 }

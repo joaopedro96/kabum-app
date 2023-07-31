@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import Home
 
 protocol KBCoverViewDelegate: AnyObject {
-    func goToHomePage(with response: KBHomeResponse)
+    func goToHomePage()
 }
 
 final class KBCoverView: UIView {
@@ -88,17 +87,13 @@ final class KBCoverView: UIView {
 extension KBCoverView: KBCoverViewProtocol {
     func updateState(with viewState: KBCoverViewState) {
         switch viewState {
-            case .hasData(let response):
-                setSpinnerAnimation(false)
-                delegate?.goToHomePage(with: response)
-                
             ///Errors should be handled here.
             case .hasError:
                 return
                 
             case .isLoading:
                 setSpinnerAnimation(true)
-                
+                delegate?.goToHomePage()
             default: return
         }
     }
