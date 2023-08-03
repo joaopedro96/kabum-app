@@ -12,7 +12,7 @@ protocol KBCoverViewControllerDelegate: AnyObject {
     func goToHomePage()
 }
 
-final class KBCoverViewController: UIViewController {
+final public class KBCoverViewController: UIViewController {
     
     // MARK: - PROPERTIES
     
@@ -24,7 +24,8 @@ final class KBCoverViewController: UIViewController {
 
     // MARK: - INITIALIZERS
     
-    init(viewModel: KBCoverViewModelProtocol, contentView: KBCoverViewProtocol = KBCoverView()) {
+    init(viewModel: KBCoverViewModelProtocol,
+         contentView: KBCoverViewProtocol = KBCoverView()) {
         self.viewModel = viewModel
         self.contentView = contentView
         super.init(nibName: nil, bundle: nil)
@@ -37,10 +38,13 @@ final class KBCoverViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         setupController()
         bindObservables()
+    }
+    
+    func start() {
         viewModel.initState()
     }
     

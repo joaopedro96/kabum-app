@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "Engine",
+    name: "Core",
     platforms: [.iOS(.v16)],
     products: [
         .library(
-            name: "Engine",
-            targets: ["Engine"]),
+            name: "Core",
+            targets: ["Core"]),
     ],
     dependencies: [
         .package(name: "ExternalPackages", path: "../../ExternalPackages"),
@@ -17,7 +17,7 @@ let package = Package(
         .package(name: "Favorites", path: "../../Favorites")
     ],
     targets: [
-        .target(name: "Engine",
+        .target(name: "Core",
                 dependencies: [
                     .byName(name: "ExternalPackages"),
                     .byName(name: "Network"),
