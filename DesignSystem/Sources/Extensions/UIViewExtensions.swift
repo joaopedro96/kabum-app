@@ -6,16 +6,15 @@
 //
 
 import UIKit
-import DesignSystem
 
 extension UIView {
-    func addSubviews(_ views: UIView...) {
+    public func addSubviews(_ views: UIView...) {
         views.forEach { itemView in
             addSubview(itemView)
         }
     }
     
-    func constraintToSuperview(top: CGFloat = 0,
+    public func constraintToSuperview(top: CGFloat = 0,
                                leading: CGFloat = 0,
                                trailing: CGFloat = 0,
                                bottom: CGFloat = 0) {
@@ -29,7 +28,7 @@ extension UIView {
         ])
     }
     
-    func setBadge(for value: Int) {
+    public func setBadge(for value: Int) {
         removeBadge()
         if value != 0 {
             addBadge(for: value)

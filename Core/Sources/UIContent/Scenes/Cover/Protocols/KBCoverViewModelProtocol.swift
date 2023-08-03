@@ -25,7 +25,6 @@ extension KBCoverViewProtocol where Self: UIView {
 }
 
 enum KBCoverViewState {
-    case hasData(KBHomeResponse)
     case hasError(Error)
     case isEmpty
     case isLoading

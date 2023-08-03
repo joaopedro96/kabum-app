@@ -3,12 +3,12 @@ import ProjectDescription
 // MARK: - SETTINGS
 
 let targetConfigurations: [Configuration] = [
-    .debug(name: .debug, xcconfig: Path("config/KabumTargetDebug.xcconfig")),
-    .release(name: .release, xcconfig: Path("config/KabumTargetRelease.xcconfig"))]
+    .debug(name: .debug, xcconfig: Path("../config/KabumTargetDebug.xcconfig")),
+    .release(name: .release, xcconfig: Path("../config/KabumTargetRelease.xcconfig"))]
 
 let projectConfigurations: [Configuration] = [
-    .debug(name: .debug, xcconfig: Path("config/KabumProjectDebug.xcconfig")),
-    .release(name: .release, xcconfig: Path("config/KabumProjectRelease.xcconfig"))]
+    .debug(name: .debug, xcconfig: Path("../config/KabumProjectDebug.xcconfig")),
+    .release(name: .release, xcconfig: Path("../config/KabumProjectRelease.xcconfig"))]
 
 let targetSettings: Settings = .settings(
     configurations: targetConfigurations,
@@ -21,18 +21,15 @@ let projectSettings: Settings = .settings(
 // MARK: - PACKAGES
 
 let externalPackage: [Package] = [
-    .package(path: "ExternalPackages")
+    .package(path: "../ExternalPackages")
 ]
 
 let localPackages: [Package] = [
-    .package(path: "Core"),
+    .package(path: "../Core"),
     .package(path: "Engine"),
-    .package(path: "Network"),
-    .package(path: "DesignSystem"),
-    .package(path: "Home"),
-    .package(path: "Departments"),
-    .package(path: "Favorites"),
-    .package(path: "Account")
+    .package(path: "../Network"),
+    .package(path: "../DesignSystem"),
+    .package(path: ".")
 ]
 
 let packages: [Package] = localPackages + externalPackage
@@ -49,18 +46,18 @@ let appTarget = Target(
   name: "Kabum",
   platform: .iOS,
   product: .app,
-  bundleId: "1.0.0",
-  infoPlist: "Kabum/Sources/Core/Info.plist",
-  sources: ["Kabum/Sources/**"],
-  resources: ["Kabum/Resources/**"],
+  bundleId: "1.0.9",
+  infoPlist: "../Kabum/Sources/Core/Info.plist",
+  sources: ["../Kabum/Sources/**"],
+  resources: ["../Kabum/Resources/**"],
   dependencies: coreAppDependency,
   settings: targetSettings)
 
 // MARK: - PROJECT
 
 let project = Project(
-    name: "Kabum",
-    organizationName: "joaoribeiro.co.team",
+    name: "Departments",
+    organizationName: "joaoribeiro.co.team.account",
     packages: packages,
     settings: projectSettings,
     targets: [appTarget]

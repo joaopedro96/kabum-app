@@ -26,19 +26,5 @@ final class KBCoverViewModel: KBCoverViewModelProtocol {
     
     func initState() {
         viewState.onNext(.isLoading)
-        fetchHomeData()
-    }
-    
-    // MARK: - FETCH METHODS
-    
-    private func fetchHomeData() {
-        service.execute(request: KBHomeRequest.home(page: 1)) { [weak self] (result: Result<KBHomeResponse, Error>) in
-            switch result {
-                case .success(let data):
-                    self?.viewState.onNext(.hasData(data))
-                case .failure(let error):
-                    self?.viewState.onNext(.hasError(error))
-            }
-        }
     }
 }
