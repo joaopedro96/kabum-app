@@ -1,5 +1,5 @@
 //
-//  KBFlowEngine.swift
+//  KBCoreFlowManager.swift
 //  Core
 //
 //  Created by João Pedro Mata on 26/07/23.
@@ -8,19 +8,33 @@
 import UIKit
 import Network
 import DesignSystem
+import Onboarding
 import Departments
 
-public class KBFlowEngine {
+public class KBCoreFlowManager: UINavigationController {
     
-    public var tabBarNavControllers: [UINavigationController]
-    public let serviceManager: KBServiceManagerProtocol
+    private var tabBarNavControllers: [UINavigationController] = []
+    private let serviceManager: KBServiceManagerProtocol = KBServiceManager()
+    private var onboardingManager: KBOnboardingFlowManager
     private var categoriesManager: KBCategoriesFlowManager
     
-    public init(tabBarNavControllers: [UINavigationController], serviceManager: KBServiceManagerProtocol) {
-        self.tabBarNavControllers = tabBarNavControllers
-        self.serviceManager = serviceManager
+    public init() {
+        onboardingManager = KBOnboardingFlowManager(serviceManager: serviceManager)
         categoriesManager = KBCategoriesFlowManager(serviceManager: serviceManager)
+        let rootVC = onboardingManager.makeCoverViewController()
+        super.init(rootViewController: rootVC)
+        onboardingManager.onboardingIntegration = self
         categoriesManager.categoriesIntegration = self
+        navigationBar.isHidden = true
+        start()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func start() {
+        onboardingManager.start()
     }
     
     public func assembleTabBar() -> UITabBarController? {
@@ -39,7 +53,7 @@ public class KBFlowEngine {
     }
 }
 
-extension KBFlowEngine: KBCategoriesModuleIntegrationProtocol {
+extension KBCoreFlowManager: KBCategoriesModuleIntegrationProtocol {
     public func appendProductToCartList(for productCode: Int) {
         tabBarNavControllers.forEach { navigationController in
             let navController = navigationController as? KBSearchableNavigationController
@@ -52,5 +66,14 @@ extension KBFlowEngine: KBCategoriesModuleIntegrationProtocol {
             let navController = navigationController as? KBSearchableNavigationController
             navController?.rootViewController.shoppingCartList.removeAll(where: { $0 == productCode } )
         }
+    }
+}
+
+extension KBCoreFlowManager: KBOnboardingModuleIntegrationProtocol {
+    public func setupTabBar() {
+        viewControllers.removeAll()
+        
+        guard let tabBar = assembleTabBar() else { return }
+        pushViewController(tabBar, animated: false)
     }
 }

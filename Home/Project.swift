@@ -37,7 +37,7 @@ let packages: [Package] = localPackages + externalPackage
 // MARK: - PACKAGE DEPENDENCIES
 
 let coreAppDependency: [TargetDependency] = [
-    .package(product: "Onboarding")
+    .package(product: "Core")
 ]
 
 // MARK: - TARGET

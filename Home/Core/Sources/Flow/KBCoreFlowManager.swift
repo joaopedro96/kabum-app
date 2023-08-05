@@ -1,5 +1,5 @@
 //
-//  KBFlowEngine.swift
+//  KBCoreFlowManager.swift
 //  Core
 //
 //  Created by João Pedro Mata on 26/07/23.
@@ -8,19 +8,33 @@
 import UIKit
 import Network
 import DesignSystem
+import Onboarding
 import Home
 
-public class KBFlowEngine {
+public class KBCoreFlowManager: UINavigationController {
     
-    public var tabBarNavControllers: [UINavigationController]
-    public let serviceManager: KBServiceManagerProtocol
+    public var tabBarNavControllers: [UINavigationController] = []
+    public let serviceManager: KBServiceManagerProtocol = KBServiceManager()
+    private var onboardingManager: KBOnboardingFlowManager
     private var homeManager: KBHomeFlowManager
     
-    public init(tabBarNavControllers: [UINavigationController],
-                serviceManager: KBServiceManagerProtocol) {
-        self.tabBarNavControllers = tabBarNavControllers
-        self.serviceManager = serviceManager
-        self.homeManager = KBHomeFlowManager(serviceManager: serviceManager)
+    public init() {
+        onboardingManager = KBOnboardingFlowManager(serviceManager: serviceManager)
+        homeManager = KBHomeFlowManager(serviceManager: serviceManager)
+        let rootVC = onboardingManager.makeCoverViewController()
+        super.init(rootViewController: rootVC)
+        onboardingManager.onboardingIntegration = self
+        homeManager.homeIntegration = self
+        navigationBar.isHidden = true
+        start()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func start() {
+        onboardingManager.start()
     }
     
     public func assembleTabBar() -> UITabBarController? {
@@ -39,7 +53,17 @@ public class KBFlowEngine {
     }
 }
 
-extension KBFlowEngine: KBHomeModuleIntegrationProtocol {
+extension KBCoreFlowManager: KBOnboardingModuleIntegrationProtocol {
+    public func setupTabBar() {
+        viewControllers.removeAll()
+        
+        guard let tabBar = assembleTabBar() else { return }
+        pushViewController(tabBar, animated: false)
+    }
+}
+
+
+extension KBCoreFlowManager: KBHomeModuleIntegrationProtocol {
     public func appendProductToCartList(for productCode: Int) {
         tabBarNavControllers.forEach { navigationController in
             let navController = navigationController as? KBSearchableNavigationController

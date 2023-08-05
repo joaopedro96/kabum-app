@@ -14,6 +14,7 @@ let package = Package(
     dependencies: [
         .package(name: "ExternalPackages", path: "../../ExternalPackages"),
         .package(name: "Network", path: "../../Network"),
+        .package(name: "Onboarding", path: "../../Onboarding"),
         .package(name: "Departments", path: "../../Departments")
     ],
     targets: [
@@ -21,6 +22,7 @@ let package = Package(
                 dependencies: [
                     .byName(name: "ExternalPackages"),
                     .byName(name: "Network"),
+                    .byName(name: "Onboarding"),
                     .byName(name: "Departments")
                 ],
                 path: "Sources")
