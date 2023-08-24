@@ -13,11 +13,13 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Network", path: "../Network"),
+        .package(name: "DesignSystem", path: "../DesignSystem")
     ],
     targets: [
         .target(name: "Onboarding",
                 dependencies: [
                     .byName(name: "Network"),
+                    .byName(name: "DesignSystem")
                 ],
                 path: "Sources")
     ]

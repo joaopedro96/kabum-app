@@ -9,11 +9,11 @@ import UIKit
 import Network
 import DesignSystem
 
-final public class KBFavoritesFlowManager {
+final public class KBFavoritesFlowManager: KBModuleIntegrator {
     
     private var navigationController: UINavigationController?
     private let serviceManager: KBServiceManagerProtocol
-    public weak var favoritesIntegration: KBFavoritesModuleIntegrationProtocol?
+    public weak var integration: KBFavoritesModuleIntegrationProtocol?
     
     public init(serviceManager: KBServiceManagerProtocol) {
         self.serviceManager = serviceManager
@@ -56,10 +56,10 @@ extension KBFavoritesFlowManager: KBBaseNavigationViewControllerDelegate {
     }
     
     public func appendProductToCartList(for productCode: Int) {
-        favoritesIntegration?.appendProductToCartList(for: productCode)
+        integration?.appendProductToCartList(for: productCode)
     }
     
     public func removeProductFromCartList(for productCode: Int) {
-        favoritesIntegration?.removeProductFromCartList(for: productCode)
+        integration?.removeProductFromCartList(for: productCode)
     }
 }

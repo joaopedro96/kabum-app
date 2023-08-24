@@ -11,16 +11,18 @@ import DesignSystem
 
 extension KBCoreFlowManager {
     func setHomeManager() {
-        homeManager = KBHomeFlowManager(serviceManager: serviceManager)
-        homeManager?.homeIntegration = self
+        let flowManager = KBHomeFlowManager(serviceManager: serviceManager)
+        flowManager.integration = self
+        homeManager = flowManager
     }
     
     func addHomeTab(to tabBar: KBTabBarController) {
-        guard let homeVC = homeManager?.makeHomeViewController() else { return }
+        guard let homeManager = homeManager as? KBHomeFlowManager else { return }
+        let homeVC = homeManager.makeHomeViewController()
         tabBar.addTab(tabRootController: homeVC,
                       title: "Início",
                       image: UIImage.homeIcon)
-        homeManager?.setNavigation(with: tabBar.navigationControllers.last)
+        homeManager.setNavigation(with: tabBar.navigationControllers.last)
     }
 }
 

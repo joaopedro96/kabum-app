@@ -8,11 +8,6 @@
 import UIKit
 import Network
 import DesignSystem
-import Onboarding
-import Home
-import Departments
-import Favorites
-import Account
 
 public class KBCoreFlowManager {
     
@@ -22,11 +17,11 @@ public class KBCoreFlowManager {
     
     var tabBarNavControllers: [UINavigationController] = []
     let serviceManager: KBServiceManagerProtocol = KBServiceManager()
-    var onboardingManager: KBOnboardingFlowManager?
-    var homeManager: KBHomeFlowManager?
-    var categoriesManager: KBCategoriesFlowManager?
-    var favoritesManager: KBFavoritesFlowManager?
-    var accountManager: KBAccountFlowManager?
+    var onboardingManager: KBModuleIntegrator?
+    var homeManager: KBModuleIntegrator?
+    var departmentsManager: KBModuleIntegrator?
+    var favoritesManager: KBModuleIntegrator?
+    var accountManager: KBModuleIntegrator?
     
     // MARK: - INITIALIZERS
     
@@ -52,7 +47,7 @@ public class KBCoreFlowManager {
     // MARK: - PRIVATE METHODS
     
     private func setRootNavigation() {
-        guard let rootVC = onboardingManager?.makeCoverViewController() else { return }
+        guard let rootVC = getOnboardingRootViewController() else { return }
         rootNavigation = UINavigationController(rootViewController: rootVC)
         rootNavigation?.navigationBar.isHidden = true
     }
@@ -66,6 +61,6 @@ public class KBCoreFlowManager {
     }
     
     private func start() {
-        onboardingManager?.start()
+        startOnboarding()
     }
 }

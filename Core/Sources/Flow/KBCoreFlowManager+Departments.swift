@@ -5,23 +5,25 @@
 //  Created by João Pedro Mata on 23/08/23.
 //
 
-import UIKit
 import Departments
+import UIKit
 import DesignSystem
 
 extension KBCoreFlowManager {
     func setDepartmentsManager() {
-        categoriesManager = KBCategoriesFlowManager(serviceManager: serviceManager)
-        homeManager?.homeIntegration = self
-        categoriesManager?.categoriesIntegration = self
+        let flowManager = KBDepartmentsFlowManager(serviceManager: serviceManager)
+        flowManager.integration = self
+        departmentsManager = flowManager
     }
     
     func addCategoriesTab(to tabBar: KBTabBarController) {
-        guard let categoriesVC = categoriesManager?.makeCategoriesViewController() else { return }
+        guard let departmentsManager = departmentsManager as? KBDepartmentsFlowManager else { return }
+
+        let categoriesVC = departmentsManager.makeDepartmentsViewController()
         tabBar.addTab(tabRootController: categoriesVC,
                       title: "Categorias",
                       image: UIImage.categorieIcon)
-        categoriesManager?.setNavigation(with: tabBar.navigationControllers.last)
+        departmentsManager.setNavigation(with: tabBar.navigationControllers.last)
     }
 }
 

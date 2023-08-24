@@ -5,22 +5,24 @@
 //  Created by João Pedro Mata on 23/08/23.
 //
 
-import UIKit
 import Account
+import UIKit
 import DesignSystem
 
 extension KBCoreFlowManager {
     func setAccountManager() {
-        accountManager = KBAccountFlowManager(serviceManager: serviceManager)
-        accountManager?.accountIntegration = self
+        let flowManager = KBAccountFlowManager(serviceManager: serviceManager)
+        flowManager.integration = self
+        accountManager = flowManager
     }
     
     func addAccountTab(to tabBar: KBTabBarController) {
-        guard let accountVC = accountManager?.makeAccountViewController() else { return }
+        guard let accountManager = accountManager as? KBAccountFlowManager else { return }
+        let accountVC = accountManager.makeAccountViewController()
         tabBar.addTab(tabRootController: accountVC,
                       title: "Minha Conta",
                       image: UIImage.accountIcon)
-        accountManager?.setNavigation(with: tabBar.navigationControllers.last)
+        accountManager.setNavigation(with: tabBar.navigationControllers.last)
     }
 }
 

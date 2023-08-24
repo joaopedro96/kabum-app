@@ -9,12 +9,12 @@ import UIKit
 import Network
 import DesignSystem
 
-public class KBHomeFlowManager {
+public class KBHomeFlowManager: KBModuleIntegrator {
     
     private var navigationController: UINavigationController?
     private let serviceManager: KBServiceManagerProtocol
     
-    public weak var homeIntegration: KBHomeModuleIntegrationProtocol?
+    public weak var integration: KBHomeModuleIntegrationProtocol?
     
     public init(serviceManager: KBServiceManagerProtocol) {
         self.serviceManager = serviceManager
@@ -51,7 +51,6 @@ public class KBHomeFlowManager {
         searchVC.title = "Pesquisar"
         navigationController?.pushViewController(searchVC, animated: true)
     }
-    
 }
 
 extension KBHomeFlowManager: KBBaseNavigationViewControllerDelegate {
@@ -64,11 +63,11 @@ extension KBHomeFlowManager: KBBaseNavigationViewControllerDelegate {
     }
     
     public func appendProductToCartList(for productCode: Int) {
-        homeIntegration?.appendProductToCartList(for: productCode)
+        integration?.appendProductToCartList(for: productCode)
     }
     
     public func removeProductFromCartList(for productCode: Int) {
-        homeIntegration?.removeProductFromCartList(for: productCode)
+        integration?.removeProductFromCartList(for: productCode)
     }
 }
 
