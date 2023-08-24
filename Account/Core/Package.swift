@@ -12,13 +12,10 @@ let package = Package(
             targets: ["Core"]),
     ],
     dependencies: [
-        .package(name: "ExternalPackages", path: "../ExternalPackages"),
-        .package(name: "Network", path: "../Network"),
-        .package(name: "Onboarding", path: "../Onboarding"),
-        .package(name: "Home", path: "../Home"),
-        .package(name: "Departments", path: "../Departments"),
-        .package(name: "Favorites", path: "../Favorites"),
-        .package(name: "Account", path: "../Account")
+        .package(name: "ExternalPackages", path: "../../ExternalPackages"),
+        .package(name: "Network", path: "../../Network"),
+        .package(name: "Onboarding", path: "../../Onboarding"),
+        .package(name: "Account", path: "../../Account")
     ],
     targets: [
         .target(name: "Core",
@@ -26,9 +23,6 @@ let package = Package(
                     .byName(name: "ExternalPackages"),
                     .byName(name: "Network"),
                     .byName(name: "Onboarding"),
-                    .byName(name: "Home"),
-                    .byName(name: "Departments"),
-                    .byName(name: "Favorites"),
                     .byName(name: "Account")
                 ],
                 path: "Sources")

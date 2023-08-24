@@ -26,13 +26,13 @@ let externalPackage: [Package] = [
 
 let localPackages: [Package] = [
     .package(path: "Core"),
-    .package(path: "Engine"),
-    .package(path: "Network"),
-    .package(path: "DesignSystem"),
+    .package(path: "Onboarding"),
     .package(path: "Home"),
     .package(path: "Departments"),
     .package(path: "Favorites"),
-    .package(path: "Account")
+    .package(path: "Account"),
+    .package(path: "Network"),
+    .package(path: "DesignSystem")
 ]
 
 let packages: [Package] = localPackages + externalPackage
