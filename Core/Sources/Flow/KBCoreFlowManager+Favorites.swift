@@ -5,22 +5,24 @@
 //  Created by João Pedro Mata on 23/08/23.
 //
 
-import UIKit
 import Favorites
+import UIKit
 import DesignSystem
 
 extension KBCoreFlowManager {
     func setFavoritesManager() {
-        favoritesManager = KBFavoritesFlowManager(serviceManager: serviceManager)
-        favoritesManager?.favoritesIntegration = self
+        let flowManager = KBFavoritesFlowManager(serviceManager: serviceManager)
+        flowManager.integration = self
+        favoritesManager = flowManager
     }
     
     func addFavoritesTab(to tabBar: KBTabBarController) {
-        guard let favoritesVC = favoritesManager?.makeFavoritesViewController() else { return }
+        guard let favoritesManager = favoritesManager as? KBFavoritesFlowManager else { return }
+        let favoritesVC = favoritesManager.makeFavoritesViewController()
         tabBar.addTab(tabRootController: favoritesVC,
                       title: "Favoritos",
                       image: UIImage.heartIcon)
-        favoritesManager?.setNavigation(with: tabBar.navigationControllers.last)
+        favoritesManager.setNavigation(with: tabBar.navigationControllers.last)
     }
 }
 

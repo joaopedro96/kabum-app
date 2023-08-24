@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  KBDepartmentsFlowManager.swift
 //  
 //
 //  Created by João Pedro Mata on 30/07/23.
@@ -9,12 +9,12 @@ import UIKit
 import Network
 import DesignSystem
 
-final public class KBCategoriesFlowManager {
+final public class KBDepartmentsFlowManager: KBModuleIntegrator {
     
     private var navigationController: UINavigationController?
     private let serviceManager: KBServiceManagerProtocol
     
-    public weak var categoriesIntegration: KBCategoriesModuleIntegrationProtocol?
+    public weak var integration: KBCategoriesModuleIntegrationProtocol?
     
     public init(serviceManager: KBServiceManagerProtocol) {
         self.serviceManager = serviceManager
@@ -22,7 +22,7 @@ final public class KBCategoriesFlowManager {
     
     // MARK: - MODULE INTEGRATOR
 
-    public func makeCategoriesViewController() -> KBCategoriesViewController {
+    public func makeDepartmentsViewController() -> KBCategoriesViewController {
         let viewController = KBCategoriesViewController()
         viewController.navigationDelegate = self
         return viewController
@@ -47,7 +47,7 @@ final public class KBCategoriesFlowManager {
     
 }
 
-extension KBCategoriesFlowManager: KBBaseNavigationViewControllerDelegate {
+extension KBDepartmentsFlowManager: KBBaseNavigationViewControllerDelegate {
     public func didTapNavigationCartItem() {
         presentShoppingCartPage()
     }
@@ -57,10 +57,10 @@ extension KBCategoriesFlowManager: KBBaseNavigationViewControllerDelegate {
     }
     
     public func appendProductToCartList(for productCode: Int) {
-        categoriesIntegration?.appendProductToCartList(for: productCode)
+        integration?.appendProductToCartList(for: productCode)
     }
     
     public func removeProductFromCartList(for productCode: Int) {
-        categoriesIntegration?.removeProductFromCartList(for: productCode)
+        integration?.removeProductFromCartList(for: productCode)
     }
 }

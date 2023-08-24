@@ -9,12 +9,12 @@ import UIKit
 import Network
 import DesignSystem
 
-final public class KBAccountFlowManager {
+final public class KBAccountFlowManager: KBModuleIntegrator {
     
     private var navigationController: UINavigationController?
     private let serviceManager: KBServiceManagerProtocol
     
-    public weak var accountIntegration: KBAccountModuleIntegrationProtocol?
+    public weak var integration: KBAccountModuleIntegrationProtocol?
     
     public init(serviceManager: KBServiceManagerProtocol) {
         self.serviceManager = serviceManager
