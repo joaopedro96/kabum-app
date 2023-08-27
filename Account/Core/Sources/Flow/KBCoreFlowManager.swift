@@ -8,57 +8,69 @@
 import UIKit
 import Network
 import DesignSystem
-import Account
-import Onboarding
 
-public class KBCoreFlowManager: UINavigationController {
+public class KBCoreFlowManager {
     
-    private var tabBarNavControllers: [UINavigationController] = []
-    private let serviceManager: KBServiceManagerProtocol = KBServiceManager()
-    private var onboardingManager: KBOnboardingFlowManager
-    private var accountManager: KBAccountFlowManager
+    // MARK: - PROPERTIES
+    
+    public var rootNavigation: UINavigationController?
+    
+    var tabBarNavControllers: [UINavigationController] = []
+    let serviceManager: KBServiceManagerProtocol = KBServiceManager()
+    var onboardingManager: KBModuleIntegrator?
+    var homeManager: KBModuleIntegrator?
+    var departmentsManager: KBModuleIntegrator?
+    var favoritesManager: KBModuleIntegrator?
+    var accountManager: KBModuleIntegrator?
+    
+    // MARK: - INITIALIZERS
     
     public init() {
-        onboardingManager = KBOnboardingFlowManager(serviceManager: serviceManager)
-        accountManager = KBAccountFlowManager(serviceManager: serviceManager)
-        let rootVC = onboardingManager.makeCoverViewController()
-        super.init(rootViewController: rootVC)
-        onboardingManager.onboardingIntegration = self
-        accountManager.accountIntegration = self
-        navigationBar.isHidden = true
+        setManagers()
+        setRootNavigation()
         start()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - PUBLIC METHODS
     
-    private func start() {
-        onboardingManager.start()
-    }
-    
-    public func assembleTabBar() -> UITabBarController? {
+    func assembleTabBar() -> UITabBarController? {
         let tabBar = KBTabBarController()
         addAccountTab(to: tabBar)
+        
         tabBarNavControllers.append(contentsOf: tabBar.navigationControllers)
         return tabBar
     }
     
-    private func addAccountTab(to tabBar: KBTabBarController) {
-        let accountVC = accountManager.makeAccountViewController()
-        tabBar.addTab(tabRootController: accountVC,
-                      title: "Minha Conta",
-                      image: UIImage.accountIcon)
+    // MARK: - SHARED DELEGATES
+    
+    public func appendProductToCartList(for productCode: Int) {
+        tabBarNavControllers.forEach { navigationController in
+            let navController = navigationController as? KBSearchableNavigationController
+            navController?.rootViewController.shoppingCartList.append(productCode)
+        }
+    }
+    
+    public func removeProductFromCartList(for productCode: Int) {
+        tabBarNavControllers.forEach { navigationController in
+            let navController = navigationController as? KBSearchableNavigationController
+            navController?.rootViewController.shoppingCartList.removeAll(where: { $0 == productCode } )
+        }
+    }
+    
+    // MARK: - PRIVATE METHODS
+    
+    private func setRootNavigation() {
+        guard let rootVC = getOnboardingRootViewController() else { return }
+        rootNavigation = UINavigationController(rootViewController: rootVC)
+        rootNavigation?.navigationBar.isHidden = true
+    }
+    
+    private func setManagers() {
+        setOnboardingManager()
+        setAccountManager()
+    }
+    
+    private func start() {
+        startOnboarding()
     }
 }
-
-extension KBCoreFlowManager: KBOnboardingModuleIntegrationProtocol {
-    public func setupTabBar() {
-        viewControllers.removeAll()
-        
-        guard let tabBar = assembleTabBar() else { return }
-        pushViewController(tabBar, animated: false)
-    }
-}
-
-extension KBCoreFlowManager: KBAccountModuleIntegrationProtocol { }

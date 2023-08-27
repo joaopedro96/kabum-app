@@ -8,62 +8,41 @@
 import UIKit
 import Network
 import DesignSystem
-import Onboarding
-import Home
 
-public class KBCoreFlowManager: UINavigationController {
+public class KBCoreFlowManager {
     
-    public var tabBarNavControllers: [UINavigationController] = []
-    public let serviceManager: KBServiceManagerProtocol = KBServiceManager()
-    private var onboardingManager: KBOnboardingFlowManager
-    private var homeManager: KBHomeFlowManager
+    // MARK: - PROPERTIES
+    
+    public var rootNavigation: UINavigationController?
+    
+    var tabBarNavControllers: [UINavigationController] = []
+    let serviceManager: KBServiceManagerProtocol = KBServiceManager()
+    var onboardingManager: KBModuleIntegrator?
+    var homeManager: KBModuleIntegrator?
+    var departmentsManager: KBModuleIntegrator?
+    var favoritesManager: KBModuleIntegrator?
+    var accountManager: KBModuleIntegrator?
+    
+    // MARK: - INITIALIZERS
     
     public init() {
-        onboardingManager = KBOnboardingFlowManager(serviceManager: serviceManager)
-        homeManager = KBHomeFlowManager(serviceManager: serviceManager)
-        let rootVC = onboardingManager.makeCoverViewController()
-        super.init(rootViewController: rootVC)
-        onboardingManager.onboardingIntegration = self
-        homeManager.homeIntegration = self
-        navigationBar.isHidden = true
+        setManagers()
+        setRootNavigation()
         start()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - PUBLIC METHODS
     
-    private func start() {
-        onboardingManager.start()
-    }
-    
-    public func assembleTabBar() -> UITabBarController? {
+    func assembleTabBar() -> UITabBarController? {
         let tabBar = KBTabBarController()
         addHomeTab(to: tabBar)
+        
         tabBarNavControllers.append(contentsOf: tabBar.navigationControllers)
         return tabBar
     }
     
-    private func addHomeTab(to tabBar: KBTabBarController) {
-        let homeVC = homeManager.makeHomeViewController()
-        tabBar.addTab(tabRootController: homeVC,
-                      title: "Início",
-                      image: UIImage.homeIcon)
-        homeManager.setNavigation(with: tabBar.navigationControllers.last)
-    }
-}
-
-extension KBCoreFlowManager: KBOnboardingModuleIntegrationProtocol {
-    public func setupTabBar() {
-        viewControllers.removeAll()
-        
-        guard let tabBar = assembleTabBar() else { return }
-        pushViewController(tabBar, animated: false)
-    }
-}
-
-
-extension KBCoreFlowManager: KBHomeModuleIntegrationProtocol {
+    // MARK: - SHARED DELEGATES
+    
     public func appendProductToCartList(for productCode: Int) {
         tabBarNavControllers.forEach { navigationController in
             let navController = navigationController as? KBSearchableNavigationController
@@ -76,5 +55,22 @@ extension KBCoreFlowManager: KBHomeModuleIntegrationProtocol {
             let navController = navigationController as? KBSearchableNavigationController
             navController?.rootViewController.shoppingCartList.removeAll(where: { $0 == productCode } )
         }
+    }
+    
+    // MARK: - PRIVATE METHODS
+    
+    private func setRootNavigation() {
+        guard let rootVC = getOnboardingRootViewController() else { return }
+        rootNavigation = UINavigationController(rootViewController: rootVC)
+        rootNavigation?.navigationBar.isHidden = true
+    }
+    
+    private func setManagers() {
+        setOnboardingManager()
+        setHomeManager()
+    }
+    
+    private func start() {
+        startOnboarding()
     }
 }

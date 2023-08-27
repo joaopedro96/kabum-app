@@ -44,6 +44,22 @@ public class KBCoreFlowManager {
         return tabBar
     }
     
+    // MARK: - SHARED DELEGATES
+    
+    public func appendProductToCartList(for productCode: Int) {
+        tabBarNavControllers.forEach { navigationController in
+            let navController = navigationController as? KBSearchableNavigationController
+            navController?.rootViewController.shoppingCartList.append(productCode)
+        }
+    }
+    
+    public func removeProductFromCartList(for productCode: Int) {
+        tabBarNavControllers.forEach { navigationController in
+            let navController = navigationController as? KBSearchableNavigationController
+            navController?.rootViewController.shoppingCartList.removeAll(where: { $0 == productCode } )
+        }
+    }
+    
     // MARK: - PRIVATE METHODS
     
     private func setRootNavigation() {
